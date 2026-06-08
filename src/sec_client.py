@@ -272,7 +272,35 @@ def locate_business_combinations_section(filing_text: str) -> str:
         total = base + position_score + narrative_score + weak_score
         scored.append((off, total))
 
-    # Highest score wins; tie-break on later document position
+    # Sort by score (highest first), tie-break by later position
     scored.sort(key=lambda x: (x[1], x[0]), reverse=True)
-    best_off = scored[0][0]
-    return filing_text[max(0, best_off - 500):best_off + 40_000]
+    top_score = scored[0][1]
+    # Keep any candidate within 30% of the top score — covers the common
+    # case of separate acquisition subsections (e.g. one per deal) with
+    # similar headings. Without this, the locator would pick only one
+    # subsection and the LLM would miss the others.
+    top_offsets = sorted({off for off, score in scored if score >= top_score * 0.70})
+
+    # Build a merged window from all high-scoring offsets. Each gets 50K
+    # chars of context; overlapping windows are stitched together.
+    WINDOW = 50_000
+    PRE_CONTEXT = 500
+    windows = [(max(0, off - PRE_CONTEXT), off + WINDOW) for off in top_offsets]
+    windows.sort()
+
+    parts: list[str] = []
+    last_end = -1
+    for start, end in windows:
+        if start <= last_end:
+            # extend the previous window
+            parts.append(filing_text[last_end:end])
+        else:
+            if parts:
+                parts.append("\n\n--- [non-contiguous section] ---\n\n")
+            parts.append(filing_text[start:end])
+        last_end = max(last_end, end)
+    # Cap total at 150K to stay within LLM token budgets
+    merged = "".join(parts)
+    if len(merged) > 150_000:
+        merged = merged[:150_000]
+    return merged

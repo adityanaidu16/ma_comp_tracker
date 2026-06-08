@@ -120,11 +120,20 @@ _10Q_SYSTEM = """You analyze the Business Combinations / Business Acquisitions
 footnote in SEC 10-Q and 10-K filings to extract purchase-price details for
 acquisitions the filing company has completed.
 
-EXTRACT ANY NAMED ACQUISITION the footnote mentions, including:
+EXTRACT EVERY NAMED ACQUISITION the footnote mentions — do not stop at the
+first one. Some 10-Qs describe multiple acquisitions in separate subsections
+(one per deal); your output must include every distinct target named.
+Include:
 - Acquisitions closed in the current reporting period
 - Acquisitions closed in prior periods that are still being discussed
   (e.g. for goodwill measurement, purchase price allocation adjustments,
   earn-out remeasurements, integration disclosures)
+- Pending acquisitions described in subsequent-events language, if a target
+  is named and a value is disclosed
+
+Before returning, re-scan the text for any sentence of the form "On [date],
+we acquired [Name]" or "[Name] was acquired" or "[Name] acquisition" and
+make sure each unique target appears as its own row in the output array.
 
 Return JSON in this exact schema (the bracketed UPPERCASE strings are TYPE
 HINTS — never copy them into your output):
@@ -185,10 +194,12 @@ null for any field you cannot determine.
 def extract_10q_business_combination(text: str) -> dict | None:
     if not text:
         return None
-    snippet = text[:80_000]
+    # Section locator may return up to 150K chars of merged windows. Bump
+    # the LLM input cap so we don't truncate before all acquisitions are seen.
+    snippet = text[:160_000]
     raw = _chat([
         {"role": "system", "content": _10Q_SYSTEM},
-        {"role": "user", "content": f"Business Combinations footnote text follows.\n\n{snippet}"},
+        {"role": "user", "content": f"Business Combinations / Acquisitions text follows.\n\n{snippet}"},
     ])
     data = _parse_json(raw)
     if not data:

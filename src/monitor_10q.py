@@ -72,6 +72,9 @@ def run() -> int:
                     if not target:
                         continue
                     date_iso = acq.get("closed_date") or f.filed_at
+                    if not config.is_recent_enough(date_iso):
+                        print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): {target} (closed {date_iso}) older than {config.MAX_ACQUISITION_AGE_DAYS}d cutoff, skipped")
+                        continue
                     notes_parts = []
                     if acq.get("notes"):
                         notes_parts.append(str(acq["notes"]))

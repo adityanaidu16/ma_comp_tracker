@@ -69,6 +69,9 @@ def run() -> int:
                     print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): acquisition flagged but no target name extracted, skipped")
                     continue
                 date_iso = ann.get("announced_date") or f.filed_at
+                if not config.is_recent_enough(date_iso):
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): {target} (announced {date_iso}) older than {config.MAX_ACQUISITION_AGE_DAYS}d cutoff, skipped")
+                    continue
                 structure = ann.get("structure", "unknown")
                 summary  = ann.get("summary", "")
                 notes = f"{summary} (Structure: {structure})" if summary else f"Structure: {structure}"

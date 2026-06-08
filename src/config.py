@@ -53,6 +53,10 @@ GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv(
 
 OPENROUTER_MODEL       = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat").strip()
 
+# Drop acquisitions older than this many days from the output. Default 180
+# (~ last two quarters). Increase to widen the window, set to 0 to disable.
+MAX_ACQUISITION_AGE_DAYS = int(os.getenv("MAX_ACQUISITION_AGE_DAYS", "180"))
+
 # --- sheet column layout ---------------------------------------------------
 # Columns written to the CSV / Sheet, in order. Match the user's existing
 # M&A comp tracker schema. Most are intentionally left blank when not in
@@ -92,6 +96,39 @@ def format_month_year(iso_date: str) -> str:
         return d.strftime("%b %Y")
     except (ValueError, TypeError):
         return str(iso_date)
+
+
+def parse_loose_date(date_str) -> dt.date | None:
+    """Parse a date string in any of the common formats the LLM might emit.
+
+    Tries ISO (YYYY-MM-DD, YYYY-MM, YYYY), then human ("Feb 2026",
+    "February 2026"). Returns None when nothing parses.
+    """
+    if not date_str:
+        return None
+    s = str(date_str).strip()
+    for fmt in ("%Y-%m-%d", "%Y-%m", "%Y", "%b %Y", "%B %Y", "%b. %Y"):
+        try:
+            return dt.datetime.strptime(s, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
+def is_recent_enough(date_str, max_days: int | None = None,
+                     today: dt.date | None = None) -> bool:
+    """True iff the date string is within max_days of `today`. Unparseable
+    dates return True (don't silently drop rows we can't categorize).
+    """
+    if max_days is None:
+        max_days = MAX_ACQUISITION_AGE_DAYS
+    if max_days <= 0:
+        return True
+    d = parse_loose_date(date_str)
+    if d is None:
+        return True
+    today = today or dt.date.today()
+    return (today - d).days <= max_days
 
 
 def pick_cap_table_value(data: dict) -> float | str:

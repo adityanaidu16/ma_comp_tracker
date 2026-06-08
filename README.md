@@ -121,16 +121,6 @@ Add to crontab (`crontab -e`):
 | `Notes` | both | LLM summary + structure / component breakdown |
 | `Source` | both | Filing index URL (8-K initially, replaced by 10-Q on reconciliation) |
 
-## Cost
-
-At default settings (DeepSeek V4-Flash on OpenRouter, 15-ticker comp set):
-
-- 8-K monitor: ~$0.001-0.005 per ticker per run (item-code pre-filter
-  skips ~60% of 8-Ks before any LLM call)
-- 10-Q monitor: ~$0.01-0.03 per filing parsed (footnote text is larger)
-
-Under $0.50/month total for a typical comp set on a daily cadence.
-
 ## Limitations
 
 - **LLM extraction is not a substitute for an analyst's eye.** Spot-check

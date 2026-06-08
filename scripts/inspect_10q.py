@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src import sec_client, llm_parser
 
 
-def main(ticker: str) -> int:
+def main(ticker: str, search_term: str | None = None) -> int:
     print(f"=== inspecting most recent 10-Q for {ticker} ===\n")
 
     filings = sec_client.list_recent_10qs(ticker, since_iso=None, limit=2)
@@ -46,18 +46,35 @@ def main(ticker: str) -> int:
     # Find all "Business Combinations" matches and their offsets
     bc_hits = [m.start() for m in re.finditer(r"Business\s+Combinations", text, flags=re.IGNORECASE)]
     acq_hits = [m.start() for m in re.finditer(r"\bAcquisitions?\b", text, flags=re.IGNORECASE)]
-    print(f"matches:       'Business Combinations' x {len(bc_hits)}, 'Acquisition(s)' x {len(acq_hits)}")
-    if bc_hits:
-        print("\nfirst 5 'Business Combinations' matches with context:")
-        for i, off in enumerate(bc_hits[:5]):
-            context = text[max(0, off-120):off+200].replace("\n", " ")
-            print(f"  [{i}] @ {off:,}: ...{context}...")
+    sub_hits = [m.start() for m in re.finditer(r"\bSubsequent\s+Events?\b", text, flags=re.IGNORECASE)]
+    narr_hits = [m.start() for m in re.finditer(r"\bOn\s+[A-Z][a-z]+\s+\d{1,2},?\s+\d{4},?\s+(?:we|the\s+Company|the\s+Registrant)\s+(?:acquired|completed\s+the\s+acquisition)", text)]
+    print(f"matches:       'Business Combinations' x {len(bc_hits)}, 'Acquisition(s)' x {len(acq_hits)}, 'Subsequent Events' x {len(sub_hits)}, narrative 'we acquired' x {len(narr_hits)}")
+    if narr_hits:
+        print("\nacquisition narrative sentences found (first 5):")
+        for i, off in enumerate(narr_hits[:5]):
+            context = text[off:off+300].replace("\n", " ")
+            print(f"  [{i}] @ {off:,}: {context}...")
     print()
+
+    # If user provided a search term (e.g. "Natoma"), show every occurrence
+    if search_term:
+        st_hits = [m.start() for m in re.finditer(re.escape(search_term), text, flags=re.IGNORECASE)]
+        print(f"matches for '{search_term}': x {len(st_hits)}")
+        for i, off in enumerate(st_hits[:5]):
+            context = text[max(0, off-200):off+400].replace("\n", " ")
+            print(f"  [{i}] @ {off:,}: ...{context}...")
+        print()
 
     section = sec_client.locate_business_combinations_section(text)
     out_path = Path(__file__).resolve().parent / "inspect_output.txt"
     out_path.write_text(section, encoding="utf-8")
     print(f"located section: {len(section):,} chars (full text saved to {out_path})")
+
+    # Did the located section include the search term?
+    if search_term:
+        in_section = search_term.lower() in section.lower()
+        print(f"'{search_term}' is {'IN' if in_section else 'NOT IN'} the located section")
+
     preview = section[:2000].replace("  ", " ")
     print(f"\n--- section preview (first 2K chars) ---\n{preview}\n--- end preview ---\n")
 
@@ -66,7 +83,11 @@ def main(ticker: str) -> int:
     print("\nLLM result:")
     print(json.dumps(data, indent=2, default=str))
     if data and data.get("acquisitions"):
-        print(f"\n=> {len(data['acquisitions'])} acquisition(s) extracted")
+        targets = [a.get("target", "?") for a in data["acquisitions"]]
+        print(f"\n=> {len(data['acquisitions'])} acquisition(s) extracted: {targets}")
+        if search_term:
+            hit = any(search_term.lower() in str(t).lower() for t in targets)
+            print(f"'{search_term}' was {'EXTRACTED' if hit else 'MISSED'} by the LLM")
     else:
         print("\n=> NO acquisitions extracted (this is the bug we're hunting)")
     return 0
@@ -74,6 +95,8 @@ def main(ticker: str) -> int:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("usage: python -m scripts.inspect_10q <TICKER>", file=sys.stderr)
+        print("usage: python -m scripts.inspect_10q <TICKER> [SEARCH_TERM]", file=sys.stderr)
         sys.exit(2)
-    sys.exit(main(sys.argv[1].upper()))
+    ticker = sys.argv[1].upper()
+    term = sys.argv[2] if len(sys.argv) >= 3 else None
+    sys.exit(main(ticker, term))

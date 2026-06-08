@@ -227,6 +227,17 @@ def locate_business_combinations_section(filing_text: str) -> str:
         (r"\bAcquisitions?\s+and\s+Divestitures?\b",                  8),
         (r"\bCompleted\s+Acquisitions?\b",                            7),
         (r"\bRecent\s+Acquisitions?\b",                               6),
+        # Subsequent Events — common location for acquisitions that closed
+        # after the quarter-end but before the 10-Q was filed.
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Subsequent\s+Events?\b",     11),
+        (r"\b\d{1,2}\s*[\.\)]\s+Subsequent\s+Events?\b",             10),
+        (r"\bSubsequent\s+Events?\b",                                 5),
+        # Acquisition narrative sentences. The strongest signal that a
+        # specific deal is described — high base score so any independent
+        # acquisition narrative in any footnote (including Subsequent Events
+        # or Goodwill rollforward) gets captured.
+        (r"\bOn\s+[A-Z][a-z]+\s+\d{1,2},?\s+\d{4},?\s+(?:we|the\s+Company|the\s+Registrant)\s+(?:acquired|completed\s+the\s+acquisition)", 12),
+        (r"\b(?:we|the\s+Company|the\s+Registrant)\s+acquired\s+all\s+(?:of\s+the\s+)?outstanding", 10),
         # Inline / standalone phrase (weakest — usually appears in many places)
         (r"\bBusiness\s+Acquisitions?\b",                             4),
         (r"\bBusiness\s+Combinations\b",                              3),

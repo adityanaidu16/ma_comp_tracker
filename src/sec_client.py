@@ -11,6 +11,7 @@ import time
 from dataclasses import dataclass
 
 import httpx
+from bs4 import BeautifulSoup
 from sec_api import QueryApi
 
 from . import config
@@ -72,7 +73,7 @@ def _build_filing(ticker: str, hit: dict) -> Filing:
         filed_at=filed_at,
         period_of_report=period,
         items=items,
-        primary_doc_url=primary,
+        primary_doc_url=normalize_filing_url(primary),
         filing_url=_str(hit.get("linkToFilingDetails")) or _str(hit.get("linkToHtml")),
         company_name=_str(hit.get("companyName")),
     )
@@ -113,16 +114,47 @@ def list_recent_10qs(ticker: str, since_iso: str | None = None, limit: int = 6) 
 
 # --- filing text retrieval --------------------------------------------------
 
-_HTML_TAG_RE   = re.compile(r"<[^>]+>")
-_ENTITY_RE     = re.compile(r"&[a-z#0-9]+;")
-_WHITESPACE_RE = re.compile(r"\s+")
+_WHITESPACE_RE = re.compile(r"[ \t]+")
+_BLANK_LINE_RE = re.compile(r"\n\s*\n\s*\n+")
 _UA = "ma_comp_tracker/0.1 (contact: adityanaidu16344@gmail.com)"
+
+# Tags whose content is non-narrative and should be discarded entirely
+_NOISE_TAGS = {
+    "script", "style", "noscript", "meta", "link",
+    "head", "header", "footer", "nav", "svg", "form",
+    "button", "input", "select", "iframe",
+}
+
+
+def normalize_filing_url(url: str) -> str:
+    """SEC's inline XBRL viewer (https://www.sec.gov/ix?doc=/Archives/...)
+    returns a JS wrapper, not the actual filing. Strip /ix?doc= so we hit
+    the underlying HTML at /Archives/... directly.
+    """
+    if not url:
+        return url
+    if "/ix?doc=" in url:
+        m = re.match(r"^(https?://[^/]+)/ix\?doc=(.*)$", url)
+        if m:
+            host, rest = m.group(1), m.group(2)
+            if not rest.startswith("/"):
+                rest = "/" + rest
+            url = host + rest
+    return url
 
 
 def fetch_filing_text(url: str, timeout: float = 30.0) -> str:
-    """GET the filing HTML and strip to plain text suitable for LLM parsing."""
+    """GET the filing HTML and parse to plain text suitable for LLM input.
+
+    Uses BeautifulSoup with lxml to strip script/style/nav noise, decode HTML
+    entities, and emit paragraph-separated text (one element per line). This
+    is much cleaner than regex tag-stripping which leaves JS and CSS content
+    inline.
+    """
+    url = normalize_filing_url(url)
     if not url:
         return ""
+    html = ""
     for attempt in range(3):
         try:
             with httpx.Client(timeout=timeout, headers={"User-Agent": _UA}, follow_redirects=True) as c:
@@ -134,9 +166,32 @@ def fetch_filing_text(url: str, timeout: float = 30.0) -> str:
             if attempt == 2:
                 return ""
             time.sleep(1.5 * (attempt + 1))
-    text = _HTML_TAG_RE.sub(" ", html)
-    text = _ENTITY_RE.sub(" ", text)
-    return _WHITESPACE_RE.sub(" ", text).strip()
+    if not html:
+        return ""
+    return _html_to_text(html)
+
+
+def _html_to_text(html: str) -> str:
+    """Convert SEC filing HTML to clean text. Strips scripts/styles, collapses
+    whitespace, preserves paragraph breaks for LLM readability.
+    """
+    soup = BeautifulSoup(html, "lxml")
+    for tag in soup.find_all(_NOISE_TAGS):
+        tag.decompose()
+    # Tables in 10-Q footnotes carry purchase-price data — keep their text but
+    # add line breaks so the LLM sees one cell per line, not one giant blob.
+    for tr in soup.find_all("tr"):
+        tr.append("\n")
+    for cell in soup.find_all(["td", "th"]):
+        cell.insert_after(" | ")
+    # Block-level elements get newline separation
+    for block in soup.find_all(["p", "div", "br", "li", "h1", "h2", "h3", "h4", "h5"]):
+        block.insert_after("\n")
+    text = soup.get_text(separator=" ", strip=False)
+    # Collapse horizontal whitespace, then squeeze 3+ blank lines down to 2
+    lines = [_WHITESPACE_RE.sub(" ", ln).strip() for ln in text.split("\n")]
+    lines = [ln for ln in lines if ln]
+    return _BLANK_LINE_RE.sub("\n\n", "\n".join(lines)).strip()
 
 
 def locate_business_combinations_section(filing_text: str) -> str:

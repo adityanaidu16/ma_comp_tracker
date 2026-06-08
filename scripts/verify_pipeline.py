@@ -1,13 +1,15 @@
-"""Verify the sec-api -> LLM pipeline against a known M&A 8-K.
+"""Verify the sec-api -> LLM pipeline against a known recent acquisition.
 
-Picks Cisco's 8-K announcing the Splunk acquisition (filed 2023-09-21) and
-runs it through the same fetch + LLM extraction path the daily monitor uses.
-If this returns an acquisition dict, the pipeline is working end-to-end.
+Picks the most recent acquisition-flagged 8-K from Cisco (CSCO) within the
+last 18 months that the LLM recognizes as M&A, then prints the extracted
+fields. Doesn't hardcode a URL — uses the same sec-api lookup the monitor
+uses, so URL format changes don't break it.
 
 Run with: .venv/bin/python -m scripts.verify_pipeline
 """
 from __future__ import annotations
 
+import datetime as dt
 import json
 import sys
 from pathlib import Path
@@ -16,36 +18,38 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src import sec_client, llm_parser
 
-# Cisco's 8-K announcing Splunk acquisition, filed 2023-09-21.
-# Item 1.01 (entry into material agreement) + 7.01 (Reg FD).
-SPLUNK_8K_URL = (
-    "https://www.sec.gov/Archives/edgar/data/858877/000085887723000044/"
-    "csco-20230921.htm"
-)
-
 
 def main() -> int:
-    print("Fetching filing text...")
-    text = sec_client.fetch_filing_text(SPLUNK_8K_URL)
-    if not text:
-        print("FAIL: filing text came back empty", file=sys.stderr)
-        return 1
-    print(f"OK: fetched {len(text):,} chars")
+    ticker = "CSCO"
+    since = (dt.date.today() - dt.timedelta(days=18 * 30)).isoformat()
+    print(f"Searching last 18 months of {ticker} 8-Ks for an acquisition...")
 
-    print("\nRunning LLM extraction (this calls OpenRouter)...")
-    result = llm_parser.extract_8k_acquisition_announcement(text)
-    if not result:
-        print(
-            "FAIL: LLM did not flag this as an acquisition. "
-            "Check OPENROUTER_API_KEY and OPENROUTER_MODEL.",
-            file=sys.stderr,
-        )
-        return 1
+    filings = sec_client.list_recent_8ks(ticker, since_iso=since, limit=40)
+    print(f"Got {len(filings)} 8-K filings\n")
 
-    print("\nLLM result:")
-    print(json.dumps(result, indent=2))
-    print("\nPipeline OK — sec-api fetch + LLM extraction both working.")
-    return 0
+    for f in filings:
+        print(f"  trying {f.accession_no} ({f.filed_at})... ", end="", flush=True)
+        text = sec_client.fetch_filing_text(f.primary_doc_url)
+        if not text:
+            print("empty text, skip")
+            continue
+        if len(text) < 3000:
+            print(f"only {len(text):,} chars, likely XBRL viewer wrapper, skip")
+            continue
+        ann = llm_parser.extract_8k_acquisition_announcement(text)
+        if not ann:
+            print(f"({len(text):,} chars) not an acquisition")
+            continue
+        print(f"ACQUISITION!\n")
+        print("Filing URL:", f.primary_doc_url)
+        print("LLM result:")
+        print(json.dumps(ann, indent=2))
+        print("\nPipeline OK — sec-api fetch + LLM extraction working end-to-end.")
+        return 0
+
+    print("\nNo acquisition 8-Ks found in the last 18 months for", ticker)
+    print("Pipeline mechanics may still be fine — try a different ticker or a longer window.")
+    return 1
 
 
 if __name__ == "__main__":

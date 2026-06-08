@@ -2,7 +2,31 @@
 
 Monitors SEC 8-K and 10-Q filings from a configurable comp set of public
 acquirers, extracts acquisition details with a cheap LLM (DeepSeek V4-Flash
-via OpenRouter by default), and writes the results to a Google Sheet.
+via OpenRouter by default), and writes the results to a CSV (default) or
+Google Sheet.
+
+## Team quickstart
+
+```bash
+git clone https://github.com/adityanaidu16/ma_comp_tracker.git
+cd ma_comp_tracker
+make setup            # creates venv, installs deps, copies .env template
+# Edit .env: fill in SEC_API_KEY, OPENROUTER_API_KEY, SEC_USER_AGENT
+make run              # 8-K + 10-Q monitors + summary, all in one command
+make summary          # show current tracker contents anytime
+```
+
+Then open `data/acquisitions.csv` (or paste into your shared Sheet).
+
+All common operations are wired up in the Makefile — run `make help` for
+the full list. The most used ones for our team:
+
+| Command | What it does |
+|---|---|
+| `make run` | Full daily run: 8-K monitor, 10-Q monitor, prints summary |
+| `make summary` | Read-only view of the current CSV, most recent deals first |
+| `make inspect TICKER=CSCO TERM=Splunk` | Diagnose why a specific deal is missing |
+| `make reset` | Wipe `state.json` + CSV, preserve `.env` |
 
 ## Two-stage workflow
 

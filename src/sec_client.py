@@ -122,7 +122,13 @@ def list_recent_10qs(ticker: str, since_iso: str | None = None, limit: int = 6) 
 
 _WHITESPACE_RE = re.compile(r"[ \t]+")
 _BLANK_LINE_RE = re.compile(r"\n\s*\n\s*\n+")
-_UA = "ma_comp_tracker/0.1 (contact: adityanaidu16344@gmail.com)"
+# SEC requires identifying contact in the User-Agent. Configurable via env
+# so each team member or deployment runs with their own contact (don't
+# share one address across the firm — SEC may rate-limit by UA).
+_UA = os.getenv(
+    "SEC_USER_AGENT",
+    "ma_comp_tracker/0.1 (contact: REPLACE_WITH_YOUR_EMAIL@yourfirm.com)",
+)
 
 # Tags whose content is non-narrative and should be discarded entirely
 _NOISE_TAGS = {

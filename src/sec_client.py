@@ -35,23 +35,46 @@ def _client() -> QueryApi:
 
 
 def _build_filing(ticker: str, hit: dict) -> Filing:
-    items_raw = hit.get("items") or ""
-    items = [s.strip() for s in re.split(r"[,;\s]+", items_raw) if s.strip()]
+    # `items` may come as a list (newer sec-api responses) or a delimited
+    # string (older). Handle both. Also tolerate non-string values for
+    # other fields and treat None as empty.
+    items_raw = hit.get("items")
+    if isinstance(items_raw, list):
+        items = [str(s).strip() for s in items_raw if s is not None and str(s).strip()]
+    elif isinstance(items_raw, str):
+        items = [s.strip() for s in re.split(r"[,;\s]+", items_raw) if s.strip()]
+    else:
+        items = []
+
     docs = hit.get("documentFormatFiles") or []
-    primary = next(
-        (d.get("documentUrl") for d in docs if d.get("type", "").upper() in {"8-K", "10-Q", "10-K"}),
-        docs[0].get("documentUrl") if docs else "",
-    )
+    primary = ""
+    for d in docs:
+        if not isinstance(d, dict):
+            continue
+        if str(d.get("type", "")).upper() in {"8-K", "10-Q", "10-K"}:
+            primary = d.get("documentUrl") or ""
+            break
+    if not primary and docs:
+        first = docs[0]
+        if isinstance(first, dict):
+            primary = first.get("documentUrl") or ""
+
+    def _str(val) -> str:
+        return "" if val is None else str(val)
+
+    filed_at = _str(hit.get("filedAt"))[:10]
+    period   = _str(hit.get("periodOfReport"))[:10]
+
     return Filing(
         ticker=ticker,
-        accession_no=hit.get("accessionNo", ""),
-        form_type=hit.get("formType", ""),
-        filed_at=(hit.get("filedAt") or "")[:10],
-        period_of_report=(hit.get("periodOfReport") or "")[:10],
+        accession_no=_str(hit.get("accessionNo")),
+        form_type=_str(hit.get("formType")),
+        filed_at=filed_at,
+        period_of_report=period,
         items=items,
-        primary_doc_url=primary or "",
-        filing_url=hit.get("linkToFilingDetails", "") or hit.get("linkToHtml", ""),
-        company_name=hit.get("companyName", ""),
+        primary_doc_url=primary,
+        filing_url=_str(hit.get("linkToFilingDetails")) or _str(hit.get("linkToHtml")),
+        company_name=_str(hit.get("companyName")),
     )
 
 

@@ -28,6 +28,7 @@ def run() -> int:
 
     updated = 0
     added   = 0
+    analyzed_count = 0
     err_count = 0
 
     for ticker, label in config.COMP_SET:
@@ -36,22 +37,35 @@ def run() -> int:
             filings = sec_client.list_recent_10qs(ticker, since_iso=default_since, limit=6)
         except Exception as e:
             print(f"[{ticker}] list_recent_10qs error: {e}", file=sys.stderr)
+            traceback.print_exc()
             err_count += 1
             continue
 
+        new_filings = []
         for f in filings:
             if last_acc and f.accession_no == last_acc:
                 break
+            new_filings.append(f)
+
+        if not new_filings:
+            print(f"[{ticker}] no new 10-Qs/10-Ks since last run (state: {last_acc or 'none'})")
+            continue
+
+        print(f"[{ticker}] {len(new_filings)} new 10-Q/10-K(s) to analyze")
+        for f in new_filings:
             try:
                 full = sec_client.fetch_filing_text(f.primary_doc_url)
                 if not full:
-                    print(f"[{ticker}] empty text for {f.accession_no}", file=sys.stderr)
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): empty filing text, skipped")
                     continue
                 section = sec_client.locate_business_combinations_section(full)
                 if not section:
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): no Business Combinations footnote located")
                     continue
+                analyzed_count += 1
                 data = llm_parser.extract_10q_business_combination(section)
                 if not data or not data.get("acquisitions"):
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): footnote present but no acquisitions described")
                     continue
                 for acq in data["acquisitions"]:
                     target = acq.get("target") or ""
@@ -76,12 +90,12 @@ def run() -> int:
                     if idx:
                         sheets_client.update_acquisition(ws, row, idx)
                         updated += 1
-                        print(f"[{ticker}] updated row {idx}: {target}")
+                        print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): updated row {idx} for {target}")
                     else:
                         # No prior 8-K row; append as a fresh closed-reconciled row.
                         sheets_client.append_acquisition(ws, row)
                         added += 1
-                        print(f"[{ticker}] added (no prior 8-K): {target}")
+                        print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): added (no prior 8-K row) for {target}")
             except Exception as e:
                 print(f"[{ticker}] error processing {f.accession_no}: {e}", file=sys.stderr)
                 traceback.print_exc()
@@ -92,7 +106,10 @@ def run() -> int:
             state.mark_seen(s, ticker, "10-Q", filings[0].accession_no)
 
     state.save(s)
-    print(f"\nDone: {updated} rows updated, {added} new rows, {err_count} errors.")
+    print(
+        f"\nDone: {updated} rows updated, {added} new rows, "
+        f"{analyzed_count} footnotes analyzed by LLM, {err_count} errors."
+    )
     return 0 if err_count == 0 else 1
 
 

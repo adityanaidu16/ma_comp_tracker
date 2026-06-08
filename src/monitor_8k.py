@@ -27,6 +27,8 @@ def run() -> int:
 
     new_count = 0
     err_count = 0
+    analyzed_count = 0
+    skipped_count = 0
 
     for ticker, label in config.COMP_SET:
         last_acc = state.last_seen(s, ticker, "8-K")
@@ -34,21 +36,34 @@ def run() -> int:
             filings = sec_client.list_recent_8ks(ticker, since_iso=default_since, limit=25)
         except Exception as e:
             print(f"[{ticker}] list_recent_8ks error: {e}", file=sys.stderr)
+            traceback.print_exc()
             err_count += 1
             continue
 
-        # Newest first; only process filings strictly newer than last_acc
+        # How many filings are actually new (newer than last_acc)
+        new_filings = []
         for f in filings:
             if last_acc and f.accession_no == last_acc:
-                break  # remainder are older, already seen
+                break
+            new_filings.append(f)
+
+        if not new_filings:
+            print(f"[{ticker}] no new 8-Ks since last run (state: {last_acc or 'none'})")
+            continue
+
+        print(f"[{ticker}] {len(new_filings)} new 8-K(s) to analyze")
+        for f in new_filings:
             try:
                 text = sec_client.fetch_filing_text(f.primary_doc_url)
                 if not text:
-                    print(f"[{ticker}] empty text for {f.accession_no}", file=sys.stderr)
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): empty filing text, skipped")
                     continue
+                analyzed_count += 1
                 ann = llm_parser.extract_8k_acquisition_announcement(text)
                 if not ann:
-                    continue  # not an acquisition 8-K
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): not an acquisition")
+                    skipped_count += 1
+                    continue
                 row = {
                     "acquirer": label,
                     "acquirer_ticker": ticker,
@@ -70,11 +85,13 @@ def run() -> int:
                 # Don't double-write if target already exists for this acquirer
                 existing = sheets_client.find_row_index(ws, ticker, row["target"])
                 if existing:
-                    print(f"[{ticker}] already tracked: {row['target']} (row {existing}, skipping)")
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): {row['target']} already tracked (row {existing})")
                 else:
                     sheets_client.append_acquisition(ws, row)
                     new_count += 1
-                    print(f"[{ticker}] NEW acquisition: {row['target']} ({row['headline_value_usd']})")
+                    val = row["headline_value_usd"]
+                    val_s = f"${val:,.0f}" if isinstance(val, (int, float)) else (val or "n/a")
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): ACQUISITION → {row['target']} ({val_s}, {row['structure']})")
             except Exception as e:
                 print(f"[{ticker}] error processing {f.accession_no}: {e}", file=sys.stderr)
                 traceback.print_exc()
@@ -87,7 +104,11 @@ def run() -> int:
             state.mark_seen(s, ticker, "8-K", filings[0].accession_no)
 
     state.save(s)
-    print(f"\nDone: {new_count} new acquisitions, {err_count} errors.")
+    print(
+        f"\nDone: {new_count} new acquisitions written, "
+        f"{analyzed_count} filings analyzed by LLM ({skipped_count} judged non-M&A), "
+        f"{err_count} errors."
+    )
     return 0 if err_count == 0 else 1
 
 

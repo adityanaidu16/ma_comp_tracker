@@ -10,11 +10,17 @@ import re
 import time
 from dataclasses import dataclass
 
+import warnings
+
 import httpx
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from sec_api import QueryApi
 
 from . import config
+
+# SEC filings are sometimes served as XHTML; lxml's HTML parser handles them
+# fine but BeautifulSoup emits a warning. Suppress — we don't need the noise.
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 
 @dataclass
@@ -197,64 +203,76 @@ def _html_to_text(html: str) -> str:
 def locate_business_combinations_section(filing_text: str) -> str:
     """Slice the filing text to the Business Combinations / Acquisitions footnote.
 
-    Strategy: find ALL mentions of "Business Combinations" / "Acquisitions" /
-    similar, score each by likelihood of being the actual footnote (vs the
-    accounting-policies boilerplate or a forward-looking risk factor), pick
-    the highest-scoring one and return a 40K-char window from there.
+    Strategy: find ALL acquisition-related heading candidates, score each by
+    (a) how strong the heading pattern is (numbered "Note N. Business
+    Acquisitions" > inline "Business Combinations"), (b) position (footnotes
+    in back half), and (c) presence of acquisition-narrative phrasing nearby
+    ("we acquired", "all outstanding equity", "purchase consideration"). Pick
+    the highest-scoring match and return a 40K-char window from there.
     """
     if not filing_text:
         return ""
 
-    # Find candidate locations of acquisition-related headings
+    # Candidate heading patterns. Higher base score = more specific.
     patterns = [
-        # Numbered footnotes / notes
-        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Business\s+Combinations",  10),
-        (r"\b\d{1,2}\s*[\.\)]\s+Business\s+Combinations",          10),
-        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Acquisitions?\b",           8),
-        (r"\b\d{1,2}\s*[\.\)]\s+Acquisitions?\b",                   8),
-        # Inline / standalone headings
-        (r"\bBusiness\s+Combinations\b",                            3),
-        (r"\bRecent\s+Acquisitions?\b",                             6),
-        (r"\bAcquisitions?\s+and\s+Divestitures?\b",                7),
-        (r"\bCompleted\s+Acquisitions?\b",                          6),
+        # Numbered notes with explicit "Business Acquisitions/Combinations"
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Business\s+Acquisitions?\b", 16),
+        (r"\b\d{1,2}\s*[\.\)]\s+Business\s+Acquisitions?\b",         15),
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Business\s+Combinations\b",  14),
+        (r"\b\d{1,2}\s*[\.\)]\s+Business\s+Combinations\b",          13),
+        # Numbered notes with just "Acquisitions"
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Acquisitions?\b",             9),
+        (r"\b\d{1,2}\s*[\.\)]\s+Acquisitions?\b",                     9),
+        # Named alternatives
+        (r"\bAcquisitions?\s+and\s+Divestitures?\b",                  8),
+        (r"\bCompleted\s+Acquisitions?\b",                            7),
+        (r"\bRecent\s+Acquisitions?\b",                               6),
+        # Inline / standalone phrase (weakest — usually appears in many places)
+        (r"\bBusiness\s+Acquisitions?\b",                             4),
+        (r"\bBusiness\s+Combinations\b",                              3),
     ]
 
-    candidates: list[tuple[int, int]] = []  # (offset, score)
+    candidates: list[tuple[int, int]] = []
     for pat, base_score in patterns:
         for m in re.finditer(pat, filing_text, flags=re.IGNORECASE):
             candidates.append((m.start(), base_score))
 
     if not candidates:
-        # Last resort: financial-statements area heuristically (back half of doc)
         mid = int(len(filing_text) * 0.55)
         return filing_text[max(0, mid - 20_000):mid + 20_000]
 
-    # Boost candidates that appear after the front-matter (typical 10-Q has
-    # boilerplate, risk-factor language, then financial statements + notes in
-    # back half). Penalize matches very early in the document.
     n = len(filing_text)
+    # Strong narrative signals: text only appears in actual acquisition
+    # footnotes, not in accounting policies or intangibles tables.
+    NARRATIVE = (
+        "we acquired", "the company acquired", "the registrant acquired",
+        "all outstanding equity", "all outstanding shares",
+        "purchase consideration", "total purchase consideration",
+        "initial cash consideration", "acquisition-date fair value",
+        "consideration transferred",
+    )
+    # Weaker signals: present in many financial sections (intangibles tables,
+    # goodwill rollforwards). Worth +0.5 each, not +1.
+    WEAK = (
+        "goodwill", "intangible assets", "fair value",
+        "contingent consideration", "deferred consideration",
+    )
+
     scored: list[tuple[int, int]] = []
     for off, base in candidates:
         position_score = 0
-        if off > n * 0.35:
-            position_score += 4
-        if off > n * 0.55:
-            position_score += 4
-        # Bonus if the surrounding 4K-char window contains the kind of
-        # purchase-price language that footnotes have (cash consideration,
-        # fair value, goodwill, intangible assets). Forward-looking sections
-        # mostly don't have these clustered together.
-        window = filing_text[off:off + 4_000].lower()
-        keyword_score = 0
-        for kw in ("cash consideration", "purchase price", "fair value",
-                   "goodwill", "intangible assets", "contingent consideration"):
-            if kw in window:
-                keyword_score += 1
-        scored.append((off, base + position_score + keyword_score))
+        if off > n * 0.40:
+            position_score += 3
+        if off > n * 0.60:
+            position_score += 3
+        # Window for keyword scoring — look forward from the heading
+        window = filing_text[off:off + 6_000].lower()
+        narrative_score = sum(2 for kw in NARRATIVE if kw in window)
+        weak_score      = sum(1 for kw in WEAK if kw in window) // 2  # int division → halves
+        total = base + position_score + narrative_score + weak_score
+        scored.append((off, total))
 
-    # Pick highest-scored; tie-break on later position (footnote is usually
-    # the latest such mention).
+    # Highest score wins; tie-break on later document position
     scored.sort(key=lambda x: (x[1], x[0]), reverse=True)
     best_off = scored[0][0]
-    # Include a little context before the heading + 40K after
     return filing_text[max(0, best_off - 500):best_off + 40_000]

@@ -1,1 +1,365 @@
-XBRL Viewer /* { let docsInInstance = instanceNames.split(" ").length; if (docsInInstance > maxDocsPerInst) maxDocsPerInst = docsInInstance; if ("baseTaxonomies" in ml["instance"][instanceNames]) { Object.keys(ml["instance"][instanceNames]["baseTaxonomies"]).forEach(baseTaxonomyUrl => { if (ixvPlusNsPattern.test(baseTaxonomyUrl)) hasIxvPlusExhibit = true; }); } }); if ( (numInstances > 1 || maxDocsPerInst > 1 || hasIxvPlusExhibit || url.includes("&redline=true")) || acsnYr >= 25 ) loadViewer("/ixviewer-plus/ix.xhtml" + ixParams); else loadViewer("/ixviewer/ix.html" + ixParams); } } else { console.log("Unable to read MetaLinks.json for this accession"); // Unable to read MetaLinks.json, use 23.2 ixviewer loadViewer("/ixviewer/ix.html" + ixParams); } } }; xhr.ontimeout = function() { console.log("Timeout reading MetaLinks.json for this accession"); // Unable to read MetaLinks.json, use 23.2 ixviewer loadViewer("/ixviewer/ix.html" + ixParams); }; xhr.open("GET", docPath + 'MetaLinks.json', true); xhr.timeout = 2000; // milliseconds xhr.send(); /* Arelle GUI usage: set title for tab in browser for when there are multiple tabs */ const urlTitleParamPattern = /&title=([^&]+),*$/; if (urlTitleParamPattern.test(url)) { const match = url.match(urlTitleParamPattern); document.title = decodeURIComponent(match[1]); } /* alternative select viewer using accession number const acsnYrSeq = match[3]; if (acsnYrSeq > "24905000") { loadViewer(docPath + "ixbrlviewer.xhtml"); } else if (acsnYrSeq > "23905000") { loadViewer("/ixviewer-plus/ix.xhtml" + ixParams); } else { loadViewer("/ixviewer/ix.html" + ixParams); } */ } /* ]]> */ Please enable JavaScript to use the EDGAR Inline XBRL Viewer.
+ | | | | | | | | | | | | | | |
+| Intangible Assets, Gross | | Accumulated Amortization | | Intangible Assets, Net | | Weighted-Average Remaining Useful Life (years) |
+Developed technology | $ | 82,241   | | | $ | ( 30,257 ) | | | $ | 51,984   | | | 4.5 |
+Customer relationships | 60,696   | | | ( 13,410 ) | | | 47,286   | | | 6.0 |
+Trade names and trademarks | 817   | | | ( 472 ) | | | 345   | | | 1.9 |
+Other intangibles | 1,231   | | | ( 726 ) | | | 505   | | | 5.6 |
+Total | $ | 144,985   | | | $ | ( 44,865 ) | | | $ | 100,120   | | | |
+12
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Acquired intangible assets, net consisted of the following as of January 31, 2026 (dollars in thousands):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Intangible Assets, Gross | | Accumulated Amortization | | Intangible Assets, Net | | Weighted-Average Remaining Useful Life (years) |
+Developed technology | $ | 37,716   | | | $ | ( 28,021 ) | | | $ | 9,695   | | | 3.1 |
+Customer relationships | 20,910   | | | ( 11,546 ) | | | 9,364   | | | 2.3 |
+Trade names and trademarks | 826   | | | ( 430 ) | | | 396   | | | 2.2 |
+Other intangibles | 1,231   | | | ( 697 ) | | | 534   | | | 5.7 |
+Total | $ | 60,683   | | | $ | ( 40,694 ) | | | $ | 19,989   | | | |
+We record amortization expense associated with acquired developed technology in cost of licenses revenue and cost of subscription services revenue, trade names and trademarks in sales and marketing expense, customer relationships in sales and marketing expense, and other intangibles in general and administrative expense in the condensed consolidated statements of operations. Amortization of acquired intangible assets was $ 4.6 million and $ 1.4 million for the three months ended April 30, 2026 and 2025, respectively.
+Expected future amortization expense related to intangible assets was as follows as of April 30, 2026 (in thousands):
+| | | | | |
+| Amount |
+Remainder of year ending January 31, 2027 | $ | 17,018   | |
+Year ending January 31, | |
+2028 | 21,935   | |
+2029 | 17,352   | |
+2030 | 16,151   | |
+2031 | 14,982   | |
+Thereafter | 12,682   | |
+Total | $ | 100,120   | |
+Goodwill
+Changes in the carrying amount of goodwill during the three months ended April 30, 2026 were as follows (in thousands):
+| | | | | |
+| Carrying Amount |
+Balance as of January 31, 2026 | $ | 125,310   | |
+Acquisition of WorkFusion
+| 63,869   | |
+Measurement period adjustment — Peak | ( 2,000 ) | |
+Effect of foreign currency translation | ( 1,484 ) | |
+Balance as of April 30, 2026 | $ | 185,695   | |
+8. Operating Leases
+Our operating leases consist of real estate and vehicles and have remaining lease terms of one year to 12 years. F or purposes of calculating operating lease liabilities, lease terms are deemed to include options to extend the lease when it is reasonably certain that we will exercise those options. Our operating lease arrangements do not contain any material restrictive covenants or residual value guarantees.
+13
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Lease costs are presented below (in thousands):
+| | | | | | | | | | | | | | | |
+| | | Three Months Ended April 30, |
+| | | | | 2026 | | 2025 |
+Operating lease cost | | | | | $ | 4,317   | | | $ | 3,377   | |
+Short-term lease cost | | | | | 625   | | | 660   | |
+Variable lease cost | | | | | 768   | | | 938   | |
+| | | | | | | |
+Total | | | | | $ | 5,710   | | | $ | 4,975   | |
+The following table represents the weighted-average remaining lease term and discount rate as of the periods presented:
+| | | | | | | | | | | |
+| As of |
+| April 30,
+2026 | | January 31,
+2026 |
+Weighted-average remaining lease term (years) | 9.3 | | 9.1 |
+Weighted-average discount rate | 7.0   | % | | 7.2   | % |
+Future undiscounted lease payments for our operating lease liabilities as of April 30, 2026 were as follows (in thousands):
+| | | | | |
+| Amount |
+Remainder of year ending January 31, 2027 | $ | 12,268   | |
+Year ending January 31, | |
+2028 | 15,885   | |
+2029 | 12,643   | |
+2030 | 11,415   | |
+2031 | 10,648   | |
+Thereafter | 48,322   | |
+Total operating lease payments | 111,181   | |
+Less: imputed interest | ( 28,178 ) | |
+Total operating lease liabilities | $ | 83,003   | |
+As of April 30, 2026, we had non-cancellable commitments in the amount of $ 11.0 million related to operating leases of real estate facilities that have not yet commenced.
+Current operating lease liabilities of $ 11.0 million and $ 10.3 million were included in accrued expenses and other current liabilities on our condensed consolidated balance sheets as of April 30, 2026 and January 31, 2026, respectively.
+Supplemental cash flow information related to leases for the three months ended April 30, 2026 and 2025 was as follows (in thousands):
+| | | | | | | | | | | | | | | |
+| | | Three Months Ended April 30, |
+| | | | | 2026 | | 2025 |
+Cash paid for amounts included in the measurement of operating lease liabilities | | | | | $ | 4,428   | | | $ | 4,470   | |
+Operating lease ROU assets obtained in exchange for new operating lease liabilities | | | | | $ | 1,295   | | | $ | 755   | |
+14
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+9. Condensed Consolidated Balance Sheet Components
+Prepaid Expenses and Other Current Assets
+Prepaid expenses and other current assets consisted of the following (in thousands):
+| | | | | | | | | | | |
+| As of |
+| April 30,
+2026 | | January 31,
+2026 |
+Prepaid expenses and service credits | $ | 64,297   | | | $ | 55,332   | |
+Other current assets | 48,488   | | | 50,245   | |
+Prepaid expenses and other current assets | $ | 112,785   | | | $ | 105,577   | |
+Property and Equipment, Net
+Property and equipment, net consisted of the following (in thousands):
+| | | | | | | | | | | |
+| As of |
+| April 30,
+2026 | | January 31,
+2026 |
+Computers and equipment | $ | 25,472   | | | $ | 25,131   | |
+Leasehold improvements | 56,085   | | | 52,578   | |
+Furniture and fixtures | 10,126   | | | 9,266   | |
+Construction in progress | 1,909   | | | 4,103   | |
+Other | 804   | | | 823   | |
+Property and equipment, gross | 94,396   | | | 91,901   | |
+Less: accumulated depreciation | ( 48,811 ) | | | ( 45,887 ) | |
+Property and equipment, net | $ | 45,585   | | | $ | 46,014   | |
+Depreciation expense for the three months ended April 30, 2026 and 2025 was $ 2.1 million and $ 1.3 million, respectively.
+Other Assets, Non-Current
+As of April 30, 2026 and January 31, 2026, other assets, non-current included $ 27.3 million and $ 27.7 million, respectively, related to equity investments in private companies without readily determinable fair values. As a measurement alternative, these investments are reported at cost and are assessed periodically to determine whether their carrying value must be adjusted for observable changes in price or indicators of impairment.
+As of April 30, 2026 and January 31, 2026, other assets, non-current also included $ 14.1 million and $ 14.2 million , respectively, related to private-company convertible bonds, which are carried at fair value. Refer to Note 5, Fair Value Measurement for further information.
+15
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Accrued Expenses and Other Current Liabilities
+Accrued expenses and other current liabilities consisted of the following (in thousands):
+| | | | | | | | | | | |
+| As of |
+| April 30,
+2026 | | January 31,
+2026 |
+Accrued expenses
+| $ | 28,820   | | | $ | 35,657   | |
+| | | |
+Accrued legal, accounting, and tax
+| 3,095   | | | 6,430   | |
+Withholding tax from employee equity transactions | 5,906   | | | 4,763   | |
+Employee stock purchase plan withholdings | 7,200   | | | 3,214   | |
+Payroll taxes and other benefits payable | 8,190   | | | 9,288   | |
+Income taxes payable | 10,632   | | | 14,784   | |
+Value-added taxes payable | 16,782   | | | 15,113   | |
+Operating lease liabilities, current | 11,012   | | | 10,306   | |
+Deferred consideration for business acquisition
+| 5,777   | | | 8,000   | |
+Contingent consideration for business acquisition
+| 33,964   | | | 1,532   | |
+Accrued partner incentives
+| 12,546   | | | 12,345   | |
+Cloud infrastructure liabilities
+| 9,527   | | | 13,183   | |
+Other | 25,241   | | | 35,881   | |
+Accrued expenses and other current liabilities | $ | 178,692   | | | $ | 170,496   | |
+10. Commitments and Contingencies
+Letters of Credit
+We had a total of $ 3.1 million and $ 3.0 million in letters of credit outstanding in favor of certain landlords for office space as of April 30, 2026 and January 31, 2026, respectively. These letters of credit renew annually and expire on various dates through fiscal year 2030.
+Indemnification
+In the ordinary course of business, we may provide indemnification of varying scope and terms to customers, vendors, directors, and officers with respect to certain matters, including, but not limited to, losses arising out of our breach of agreements, from services to be provided by us, or from intellectual property infringement claims made by third parties.
+These indemnification provisions may survive termination of the underlying agreement and the potential amount of future payments we could be required to make under these indemnification provisions may not be subject to maximum loss clauses. The maximum potential amount of future payments we could be required to make under these indemnification provisions is indeterminable. As of April 30, 2026 and January 31, 2026, we have not accrued a liability for these indemnification arrangements because the likelihood of incurring a payment obligation, if any, in connection with these indemnification arrangements was remote.
+Defined Contribution Plans
+We sponsor retirement plans for qualifying employees, including a 401(k) plan in the U.S. and defined contribution plans in certain other countries, to which we make matching contributions. Our total matching contributions to all defined contribution plans were $ 5.7 million and $ 5.5 million for the three months ended April 30, 2026 and 2025, respectively.
+Litigation
+From time to time, we may be involved in lawsuits, claims, investigations, and proceedings, consisting of intellectual property, commercial, employment, and other matters which arise in the ordinary course of business. In accordance with ASC 450, Contingencies, we make a provision for a liability when it is both probable that a liability has been incurred and the amount of the loss can be reasonably estimated.
+16
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+UiPath and certain of its officers are currently parties to the following litigation matters:
+On September 6, 2023, a putative class action lawsuit was filed in the United States District Court for the Southern District of New York against UiPath, then Co-CEO Daniel Dines ("Mr. Dines"), and then Chief Financial Officer ("CFO") Ashim Gupta ("Mr. Gupta"), captioned In re UiPath, Inc. Securities Litigation (the "2023 Securities Action"). The complaint in this action was amended multiple times and the substance of the allegations is that, in 2021 and 2022, defendants made material misstatements and omissions, including regarding UiPath’s competitive position and its financial results, in violation of Section 11 and 15 of the Securities Act and Section 10(b), Rule 10b-5, and Section 20(a) of the Exchange Act. The lawsuit is purportedly brought on behalf of a putative class of persons who purchased or otherwise acquired UiPath common stock between April 21, 2021 and September 27, 2022, and seeks unspecified monetary damages, costs and attorneys’ fees, and other unspecified relief as the Court deems appropriate. On April 23, 2024, the defendants moved to dismiss the 2023 Securities Action, and on November 4, 2024, the Court dismissed all claims under the Securities Act, but allowed the case to proceed with respect to two statements relating to competition that the plaintiffs allege violated the Exchange Act. On June 9, 2025, the plaintiff filed a third amended complaint to include two additional statements made by the defendants during the same 2021 and 2022 period, which plaintiff alleges were materially misleading. On June 26, 2025, the defendants moved to dismiss the third amended complaint in its entirety, and on October 2, 2025, the Court granted the defendants' motion to dismiss. On February 9, 2026, the plaintiff filed an appeal with the United States Court of Appeals for the Second Circuit with respect to the dismissal.
+Starting on November 30, 2023, five purported shareholder derivative lawsuits were filed in various courts against UiPath, as a nominal defendant, Mr. Dines, Mr. Gupta, and several of UiPath’s current and former directors, alleging that the individual defendants breached their fiduciary duties and committed other alleged misconduct in connection with the statements at issue in the 2023 Securities Action and by causing UiPath to repurchase shares at allegedly inflated prices. As of February 5, 2025, all of these derivative lawsuits were voluntarily dismissed without prejudice. On July 18, 2025, a new shareholder derivative lawsuit was filed in the District of Delaware against the same defendants alleging substantially similar claims. This case is captioned Rudolph v. Dines et al. ("Rudolph"). On November 19, 2025, the defendants moved to dismiss the Rudolph case in its entirety. In response, on or about January 20, 2026, plaintiff filed an amended complaint, and on February 19, 2026, defendants again moved to dismiss the amended complaint in its entirety.
+On June 20, 2024, a putative class action lawsuit was commenced in the United States District Court for the Southern District of New York against UiPath and select executives asserting claims under Sections 10(b) and 20(a) of the Exchange Act on behalf of a putative class of persons who purchased or acquired UiPath common stock, and purchasers of UiPath call options and sellers of put options, between December 1, 2023 and May 29, 2024 (the "2024 Securities Action"). Plaintiffs alleged that the defendants made material misstatements and omissions, including regarding UiPath's AI-powered Business Automation Platform and UiPath's strategy for, the success of, and customer demand for the platform, and sought unspecified monetary damages, costs and attorneys' fees, and other unspecified relief. On January 21, 2025, the defendants moved to dismiss the amended complaint and on July 23, 2025, the Court granted the motion and dismissed the amended complaint in its entirety. On September 12, 2025, the plaintiffs filed a second amended complaint alleging that former CEO Robert Enslin and Mr. Gupta made material misstatements and omissions during the earnings calls and in company disclosures during a class period of December 1, 2023 to May 29, 2024, in violation of Section 10(b) and 20(a) of the Exchange Act and Rule 10b-5 promulgated thereunder. On October 27, 2025, defendants moved to dismiss the second amended complaint in its entirety.
+The two purported shareholder derivative lawsuits related to the 2024 Securities Action, filed in the United States District Court for the Southern District of New York on July 8, 2024 and April 27, 2025, respectively, are stayed pending further resolution of the 2024 Securities Action.
+We have not recorded any accrual related to the aforementioned litigation matters as of April 30, 2026, as we believe a loss in these matters is neither probable nor estimable at this time.
+Warranty
+We warrant to customers that our platform will operate substantially in accordance with its specifications. Historically, no significant costs have been incurred related to product warranties. Based on such historical
+17
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+experience, the probability of incurring such costs in the future is deemed remote. As such, no accruals for product warranty costs have been made.
+Other Matters
+Our indirect tax positions are subject to audit in multiple jurisdictions globally.
+Notably, our Romania subsidiary was subjected to audits by the Agenția Națională de Administrare Fiscală for value-added tax and corporate income tax for the periods from January 2020 through January 2022 and January 2018 through January 2022, respectively, which were completed during the first quarter of fiscal year 2025. With regard to the value-added tax audit, an assessment of $ 14.3  million has been issued. While we paid this assessment during fiscal year 2025, we disagree with the assessment and are in the process of appealing through litigation. The amount of the payment is included in other assets, non-current on our condensed consolidated balance sheets as of April 30, 2026 and January 31, 2026. We have not recorded any estimated liability related to this litigation as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
+Additionally, our Romania subsidiary is currently subject to value-added tax audit for the period from February 2022 through February 2024. The audit is suspended until the appeal of the aforementioned prior period assessment is resolved in court. While the audit is ongoing and no official assessment has been issued, we estimate a possible loss of approximately $ 13.0  million. We have not recorded any estimated liability related to this audit as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
+Our India subsidiary is currently subject to goods and services tax ("GST") inspection for the period from April 2021 through March 2024. An inquiry for certain transactions with a GST amount of $ 46.8  million has been raised. We have responded to all requests from the tax authority. The inspection for the period from April 2018 through March 2021 has been dropped as the statute of limitation has lapsed. We have no t recorded any estimated tax liability related to this audit as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
+Additionally, during the three months ended April 30, 2026, our India subsidiary entered into an advance pricing agreement with the Indian taxing authorities for the period from April 2018 through March 2027. Based on our preliminary computation, we have recorded an expected payable amount of $ 4.4  million within accrued expenses and other current liabilities on our condensed consolidated balance sheet as of April 30, 2026.
+Further, we are currently subject to various other audits, including sales and use tax audit of our U.S. entity in New York State for the periods from March 2019 through February 2022 and December 2022 through May 2025, and VAT audits in various foreign jurisdictions. We have not recorded any estimated tax liabilities related to these audits as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
+For additional information regarding corporate income tax audits, refer to Note 13, Income Taxes .
+18
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Non-Cancelable Purchase Obligations
+In the normal course of business, we enter into non-cancelable purchase commitments with various parties, mainly for hosting services, software products and services, and purchase of credits toward products and services from strategic alliance partners.
+As of April 30, 2026, we had outstanding non-cancelable purchase obligations with a term of 12 months or longer as follows (in thousands):
+| | | | | |
+| Amount |
+Remainder of year ending January 31, 2027 | $ | 120,984   | |
+Year ending January 31, | |
+2028 | 126,238   | |
+2029 | 55,411   | |
+2030 | 69   | |
+2031 | 25   | |
+Thereafter | 17   | |
+Total | $ | 302,744   | |
+11.  Stockholders’ Equity
+Stock Repurchases
+On September 1, 2023, our board of directors approved a stock repurchase program which authorized the repurchase from time to time of up to $ 500.0  million of our outstanding shares of Class A common stock. This authorization was originally scheduled to expire on March 1, 2025. On August 30, 2024, our board of directors authorized the repurchase of an additional $ 500.0 million of our Class A common stock. These authorizations were fulfilled during the three months ended April 30, 2026, and in March 2026 , our board of directors authorized the repurchase of an additional $ 500.0 million of our Class A common stock. The current authorization may be suspended or discontinued at any time and does not have a specified expiration date. Repurchases under the program may be effected through open market purchases, privately-negotiated transactions, or otherwise in accordance with applicable federal securities laws, including through Rule 10b5-1 trading plans and under Rule 10b-18 of the Exchange Act. The timing and actual number of shares repurchased will depend on a variety of factors, including price, general business and market conditions, and alternate uses of capital.
+We repurchased 20.4 million and 21.9 million shares of our Class A common stock at an average price of $ 11.47 and $ 10.40 per share (inclusive of brokerage commission) during the three months ended April 30, 2026 and 2025, respectively.
+For the three months ended April 30, 2026 and 2025, we accrued $ 1.9  million of related excise tax pursuant to the Inflation Reduction Act of 2022, which is included in the cost of treasury stock on our condensed consolidated balance sheets.
+Subsequent to April 30, 2026, between May 1, 2026 and May 15, 2026, we repurchased an additional 2.4 million shares of our Class A common stock at an average price of $ 9.63 per share.
+Charitable Donations of Class A Common Stock
+We have reserved 2.8  million shares of our Class A common stock to fund our social impact and environmental, social, and governance initiatives. We contributed 0.3 million shares of our Class A common stock during each of the three-month periods ended April 30, 2026 and 2025 to a donor-advised fund in connection with our Pledge 1% commitment. The aggregate fair values of the shares on the respective contribution dates of $ 3.0 million and $ 4.2 million were recorded within general and administrative expense in the condensed consolidated statements of operations for the three months ended April 30, 2026 and 2025, respectively.
+19
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Accumulated Other Comprehensive Income
+For the three months ended April 30, 2026 and 2025, changes in the components of accumulated other comprehensive income (loss) were as follows (in thousands):
+| | | | | | | | | | | | | | | | | |
+| Foreign Currency Translation Adjustments | | Unrealized Gain (Loss) on Marketable Securities | | Accumulated Other Comprehensive Income |
+Balance as of January 31, 2026 | $ | 36,256   | | | $ | 345   | | | $ | 36,601   | |
+Other comprehensive loss, net of tax | ( 8,104 ) | | | ( 1,123 ) | | | ( 9,227 ) | |
+| | | | | |
+Balance as of April 30, 2026 | $ | 28,152   | | | $ | ( 778 ) | | | $ | 27,374   | |
+| | | | | | | | | | | | | | | | | |
+| Foreign Currency Translation Adjustments | | Unrealized Gain (Loss) on Marketable Securities | | Accumulated Other Comprehensive (Loss) Income |
+Balance as of January 31, 2025 | $ | ( 4,518 ) | | | $ | ( 372 ) | | | $ | ( 4,890 ) | |
+Other comprehensive income, net of tax | 33,857   | | | 556   | | | 34,413   | |
+| | | | | |
+Balance as of April 30, 2025 | $ | 29,339   | | | $ | 184   | | | $ | 29,523   | |
+12.  Equity Incentive Plans and Stock-Based Compensation
+2021 Stock Plan
+In April 2021, prior to and in connection with our initial public offering ("IPO"), we adopted our 2021 Equity Incentive Plan (the "2021 Plan"), which provides for grants of incentive stock options, nonstatutory stock options, stock appreciation rights, restricted stock awards ("RSAs"), restricted stock units ("RSUs"), performance stock units ("PSUs"), and other forms of awards. As of April 30, 2026, we have reserved 256.7 million shares of our Class A common stock to be issued under the 2021 Plan. The number of shares of our Class A common stock reserved for issuance under the 2021 Plan will automatically increase on February 1 of each year for a period of ten years , which began on February 1, 2022 and continues through February 1, 2031, in an amount equal to (1) 5 % of the total number of shares of our common stock (both Class A and Class B) outstanding on the preceding January 31, or (2) a lesser number of shares determined by our board of directors no later than the February 1 increase.
+2021 Employee Stock Purchase Plan
+In April 2021, prior to and in connection with the IPO, we adopted our 2021 Employee Stock Purchase Plan (the “ESPP”). As of April 30, 2026, the ESPP authorizes the issuance of 38.1 million shares of our Class A common stock under purchase rights granted to our employees. The number of shares of our Class A common stock reserved for issuance will automatically increase on February 1 of each year for a period of ten years , which began on February 1, 2022 and continues through February 1, 2031, by the lesser of (1) 1 % of the total number of shares of our common stock (both Class A and Class B) outstanding on the preceding January 31; and (2) 15.5 million shares, except that before the date of any such increase, our board of directors may determine that such increase will be less than the amount set forth by (1) and (2) above. The ESPP allows participants to purchase shares at the lesser of (a) 85 % of the fair market value of our Class A common stock as of the commencement of the offering period, and (b) 85 % of the fair market value of our Class A common stock on the corresponding purchase date.
+20
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Stock Options
+Stock option activity during the three months ended April 30, 2026 was as follows:
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Stock Options
+(in thousands) | | Weighted-Average Exercise Price | | Weighted-Average Remaining Contractual Life (years) | | Aggregate Intrinsic Value
+(in thousands) |
+Outstanding as of January 31, 2026 | 6,790   | | | $ | 0.57   | | | 7.5 | | $ | 81,589   | |
+Granted | 1,774   | | | $ | 0.10   | | | | | |
+Exercised | ( 1,254 ) | | | $ | 0.28   | | | | | |
+Forfeited | ( 93 ) | | | $ | 0.14   | | | | | |
+Outstanding as of April 30, 2026 | 7,217   | | | $ | 0.51   | | | 8.0 | | $ | 70,625   | |
+| | | | | | | |
+Vested and exercisable as of April 30, 2026 | 2,339   | | | $ | 1.38   | | | 5.7 | | $ | 20,866   | |
+The weighted-average grant date fair value of stock options granted during the three months ended April 30, 2026 was $ 12.16 per share. The intrinsic value of stock options exercised during the three months ended April 30, 2026 was $ 13.9 million.
+Unrecognized compensation expense associated with unvested stock options granted and outstanding as of April 30, 2026 was approximately $ 59.8 million, which is expected to be recognized over a weighted-average remaining period of 2.3 years.
+Restricted Stock Units
+RSU activity during the three months ended April 30, 2026 was as follows:
+| | | | | | | | | | | |
+| RSUs
+(in thousands) | | Weighted-Average Grant Date Fair Value Per Share |
+Unvested as of January 31, 2026 | 19,898   | | | $ | 13.56   | |
+Granted | 8,695   | | | $ | 12.00   | |
+Vested | ( 3,277 ) | | | $ | 14.35   | |
+Forfeited | ( 1,753 ) | | | $ | 14.04   | |
+Unvested as of April 30, 2026 | 23,563   | | | $ | 12.84   | |
+The intrinsic value of RSUs released during the three months ended April 30, 2026 was $ 36.4 million.
+As of April 30, 2026, total unrecognized compensation expense related to unvested RSUs was approximately $ 283.8 million, which is expected to be recognized over a weighted-average remaining period of 2.4 years.
+Performance Stock Units
+During the three months ended April 30, 2026, we granted 0.8 million PSUs with a weighted-average grant date fair value of $ 11.02 per share. These PSUs are subject to performance conditions related to the achievement of certain Company targets for fiscal year 2027, with a potential payout ranging from 0 % to 150 % of the base number of PSUs awarded. To the extent that they are earned, these PSUs will vest over three years from the grant date.
+The intrinsic value of 0.2 million PSUs released during the three months ended April 30, 2026 was $ 2.6 million.
+As of April 30, 2026, total unrecognized compensation expense related to 1.3 million unvested PSUs expected to vest was approximately $ 14.2 million, which is expected to be recognized over a weighted-average remaining period of 2.6 years.
+21
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+Employee Stock Purchase Plan Awards
+As of April 30, 2026, total unrecognized compensation expense related to the ESPP was approximately $ 0.8  million, which is expected to be recognized over a weighted-average remaining period of 0.1 years.
+Stock-Based Compensation Expense
+Stock-based compensation expense is classified in the condensed consolidated statements of operations as follows (in thousands):
+| | | | | | | | | | | | | | | |
+| | | Three Months Ended April 30, |
+| | | | | 2026 | | 2025 |
+Cost of subscription services revenue | | | | | $ | 2,268   | | | $ | 3,874   | |
+Cost of professional services and other revenue | | | | | 1,783   | | | 2,728   | |
+Sales and marketing | | | | | 16,782   | | | 23,586   | |
+Research and development | | | | | 24,741   | | | 34,595   | |
+General and administrative | | | | | 7,736   | | | 11,578   | |
+Total | | | | | $ | 53,310   | | | $ | 76,361   | |
+13. Income Taxes
+Our tax provision for interim periods is determined using an estimated annual effective tax rate, adjusted for discrete items arising in the applicable quarter. Each quarter, we update the estimated annual effective tax rate and make a year-to-date adjustment to the provision. The estimated annual effective tax rate may change due to several factors, including the relative amount of income we earn in various jurisdictions and certain book-tax differences.
+For the three months ended April 30, 2026 and 2025, we had a provision for income taxes of $ 18.4 million and $ 2.8 million, respectively, reflecting an effective tax rate of 45.0 % and ( 14.3 )%, respectively.
+For the three months ended April 30, 2026, our effective tax rate differed from the U.S. federal statutory rate primarily as a result of U.S. tax on foreign earnings and tax rate differences between the U.S. and foreign countries.
+For the three months ended April 30, 2025, our effective tax rate differed from the U.S. federal statutory rate primarily as a result of not recognizing deferred tax expense due to a full valuation allowance on U.S. and Romania deferred tax assets ("DTAs") and due to tax rate differences between the U.S. and foreign countries.
+The realization of tax benefits of net DTAs is dependent upon future levels of taxable income of an appropriate character in the periods in which the items are expected to be deductible or taxable. As of April 30, 2026, based on the available positive and negative evidence, including the amount of taxable income in the U.S. in recent years and our expectation of future profits in the U.S., we believe it is more likely than not that certain of our U.S. state DTAs and our Romania DTAs will not be realized. Therefore, we continue to maintain a full valuation allowance against such DTAs. We intend to maintain each of these full valuation allowances until sufficient positive evidence exists to support a reversal of, or decrease in, each of the respective valuation allowances. Given our current earnings and anticipated future earnings, we believe that there is a reasonable possibility that sufficient positive evidence may become available to allow us to conclude that a valuation allowance is no longer needed for these U.S. state DTAs during fiscal year 2027, and for these Romania DTAs, or a portion thereof, during fiscal year 2028, which would result in income tax benefit in the period of the respective release.
+As of April 30, 2026, we had a reserve for gross unrecognized tax benefits totaling $ 27.1 million related to income taxes, which would impact the effective tax rate if recognized. Of this amount, $ 26.2 million pertains to uncertain tax positions, and the remainder relates to interest and penalties, which are accounted for as a component of our income tax provision.
+Our tax positions are subject to income tax audits in multiple tax jurisdictions globally. Our estimates of the potential outcome of any uncertain tax position are subject to management's assessment of the relevant risks, facts, and circumstances existing at that time. We believe that we have provided adequate reserves for our income tax
+22
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+uncertainties in all open tax years. However, our future results may include adjustments to estimates in the period the audits are settled, which may impact our effective tax rate.
+Our India subsidiary is currently appealing the corporate income tax assessment of $ 1.9 million for the audit period of April 2022 through March 2023. It also has an open corporate income tax audit for the period from April 2022 through March 2024. However, following the signing of an advance pricing agreement during the three months ended April 30, 2026, India tax disputes for transfer pricing matters are expected to be withdrawn within the next three months. Our Romania subsidiary is currently appealing the corporate income tax audit decision for the period from January 2018 through January 2022. In addition, a valid bilateral transfer pricing agreement between our U.S. entity and our Romania entity on the transfer pricing methodology for the cost contribution agreement has been finalized and signed for tax years 2023 through 2028. The bilateral transfer pricing negotiations for our transfer pricing model between Japan and Romania are still underway, with the expectation of being finalized during the first half of fiscal year 2027, consistent with the tax position we have adopted.
+On December 20, 2021, the Organization for Economic Co-operation and Development ("OECD") published the Pillar Two Model Rules defining the global minimum tax for multinational enterprises with an annual revenue above €750.0 million . The OECD has since issued administrative guidance providing transition and safe harbor rules around the implementation of the Pillar Two global minimum tax. We assessed and have determined that the Pillar Two Model Rules do not have a significant impact on our estimated effective tax rate for fiscal year 2027 . We will continue to monitor the developments and evaluate potential impact on future periods.
+14. Net Income (Loss) Per Share
+The following table sets forth the computation of basic and diluted net income (loss) per share for the periods presented (in thousands except per share amounts):
+| | | | | | | | | | | |
+| Three Months Ended April 30, |
+| 2026 | | 2025 |
+Numerator: (1)
+| | | |
+Net income (loss)
+| $ | 22,525   | | | $ | ( 22,555 ) | |
+Denominator: (1)
+| | | |
+Weighted-average shares used in computing net income (loss) per share, basic
+| 523,584   | | | 548,451   | |
+Dilutive potential common shares from outstanding equity awards
+| 4,234   | | | —   | |
+Weighted-average shares used in computing net income (loss) per share, diluted
+| 527,818   | | | 548,451   | |
+Net income (loss) per share, basic
+| $ | 0.04   | | | $ | ( 0.04 ) | |
+Net income (loss) per share, diluted
+| $ | 0.04   | | | $ | ( 0.04 ) | |
+(1) Amounts presented under Class A and Class B columns in prior periods have been combined to conform with current year presentation |
+Anti-dilutive common stock equivalents excluded from the computation of diluted net income (loss) per share were as follows (in thousands):
+| | | | | | | | | | | |
+| Three Months Ended April 30, |
+| 2026 | | 2025 |
+Unvested RSUs | 10,798   | | | 25,881   | |
+Outstanding stock options | 2,330   | | | 8,830   | |
+Shares issuable under ESPP | —   | | | 1,043   | |
+Unvested PSUs
+| —   | | | 205   | |
+Returnable shares issued in connection with business acquisition | —   | | | 136   | |
+| | | |
+Total | 13,128   | | | 36,095   | |
+23
+Table of Contents
+UiPath, Inc.
+Notes to Condensed Consolidated Financial Statements (Continued)
+(unaudited)
+15. Related Party Transactions
+We have at times made use of an aircraft which is owned by Daniel Dines, our CEO, through a special purpose limited liability company and which is operated by a third-party aircraft management company. Mr. Dines, through this special purpose limited liability company, bears all associated operating, personnel, and maintenance costs. For the three months ended April 30, 2026 and 2025, we incurred expenses of $ 0.8 million and none , respectively, in connection with our business use of the aircraft.
+24
+Table of Contents
+Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations.
+The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our unaudited condensed consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q and our audited consolidated financial statements and the related notes and the discussion under the heading “Management’s Discussion and Analysis of Financial Condition and Results of Operations” for the fiscal year ended January 31, 2026 included in our Annual Report on Form 10-K filed with the Securities and Exchange Commission ("SEC") on March 25, 2026 (the "2026 Form 10-K"). This discussion, particularly information with respect to our future results of operations or financial condition, business strategy, and plans and objectives of management for future operations, includes forward-looking statements that involve risks and uncertainties as described under the heading “ Special Note Regarding Forward-Looking Statements ” in this Quarterly Report on Form 10-Q. You should review the disclosure under Part I, Item 1A, "Risk Factors," in the 2026 Form 10-K for discussion of important factors that could cause our actual results to differ materially from those anticipated in these forward-looking statements.
+Overview
+Building upon decades of leadership in automation, UiPath is pioneering the evolution from rule-based automation to intelligent, agentic automation. The UiPath Platform™ uniquely combines controlled agency, developer flexibility, and seamless integration to help organizations scale agentic automation safely and confidently. Committed to security, governance, and interoperability, we support enterprises as they transition into a future where automation delivers on the full potential of AI to transform industries.
+Historically, we have grown our revenue and ARR significantly by helping customers adopt automation as a tool, process by process, to unlock human potential. Today, our automation platform builds upon this experience by providing our customers with a foundation for enterprise-scale agentic automation.
+Business Highlights for the Three Months Ended April 30, 2026:
+• Revenue of $418.4 million increased 17% year-over-year.
+• ARR at April 30, 2026 of $1,901.2 million increased 12% year-over-year.
+• Gross margin was 82% for the three months ended April 30, 2026 and 2025.
+• Cash flow from operations was $131.9 million for the three months ended April 30, 2026, compared to $119.0 million for the t

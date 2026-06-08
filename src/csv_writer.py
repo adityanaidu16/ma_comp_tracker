@@ -1,10 +1,8 @@
-"""CSV output mode. No Google API required.
+"""CSV writer for acquisitions data.
 
-Mirrors the sheets_client.py API so monitor_8k / monitor_10q can switch
-backends transparently via OUTPUT_MODE env var.
-
-The CSV lives at data/acquisitions.csv by default. Each mutation rewrites
-the whole file (small-data assumption — fine up to a few thousand rows).
+Writes to data/acquisitions.csv. Each mutation rewrites the whole file
+(small-data assumption — fine up to a few thousand rows). Header order
+is controlled by config.SHEET_COLUMNS.
 """
 from __future__ import annotations
 

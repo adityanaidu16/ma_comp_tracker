@@ -6,4 +6,3 @@ data/state.json
 data/filings_cache/
 *.log
 .DS_Store
-service_account.json

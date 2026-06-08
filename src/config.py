@@ -38,30 +38,17 @@ COMP_SET: list[tuple[str, str]] = [
 # --- env ---------------------------------------------------------------------
 SEC_API_KEY            = os.getenv("SEC_API_KEY", "").strip()
 OPENROUTER_API_KEY     = os.getenv("OPENROUTER_API_KEY", "").strip()
-
-# Output mode: "csv" (default, writes data/acquisitions.csv, no Google setup
-# required) or "sheets" (writes directly to a Google Sheet via service account).
-OUTPUT_MODE            = os.getenv("OUTPUT_MODE", "csv").strip()
-
-# Sheets mode only — ignored when OUTPUT_MODE=csv
-GOOGLE_SHEET_ID        = os.getenv("GOOGLE_SHEET_ID", "").strip()
-GOOGLE_SHEET_TAB       = os.getenv("GOOGLE_SHEET_TAB", "M&A Comps").strip()
-GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv(
-    "GOOGLE_SERVICE_ACCOUNT_JSON",
-    str(ROOT / "service_account.json"),
-).strip()
-
 OPENROUTER_MODEL       = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat").strip()
 
 # Drop acquisitions older than this many days from the output. Default 180
 # (~ last two quarters). Increase to widen the window, set to 0 to disable.
 MAX_ACQUISITION_AGE_DAYS = int(os.getenv("MAX_ACQUISITION_AGE_DAYS", "180"))
 
-# --- sheet column layout ---------------------------------------------------
-# Columns written to the CSV / Sheet, in order. Match the user's existing
-# M&A comp tracker schema. Most are intentionally left blank when not in
-# SEC filings (Motivation, Revenue, Engineer headcount, derived ratios)
-# and can be filled in manually.
+# --- CSV column layout -----------------------------------------------------
+# Columns written to data/acquisitions.csv, in order. Match the comp tracker
+# schema. Most are intentionally left blank when not in SEC filings
+# (Motivation, Revenue, Engineer headcount, derived ratios) and can be
+# filled in manually or by formulas after import to a Sheet.
 SHEET_COLUMNS = [
     "Company",          # target company (from filing)
     "Acquirer",         # human-friendly acquirer name from COMP_SET

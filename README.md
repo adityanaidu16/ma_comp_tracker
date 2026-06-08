@@ -2,8 +2,7 @@
 
 Monitors SEC 8-K and 10-Q filings from a configurable comp set of public
 acquirers, extracts acquisition details with a cheap LLM (DeepSeek V4-Flash
-via OpenRouter by default), and writes the results to a CSV (default) or
-Google Sheet.
+via OpenRouter by default), and writes results to a CSV.
 
 ## Team quickstart
 
@@ -16,10 +15,10 @@ make run              # 8-K + 10-Q monitors + summary, all in one command
 make summary          # show current tracker contents anytime
 ```
 
-Then open `data/acquisitions.csv` (or paste into your shared Sheet).
+Then open `data/acquisitions.csv` (or paste it into your shared Sheet).
 
-All common operations are wired up in the Makefile — run `make help` for
-the full list. The most used ones for our team:
+All common operations are wired up in the Makefile. Run `make help` for
+the full list. The most used ones:
 
 | Command | What it does |
 |---|---|
@@ -32,38 +31,29 @@ the full list. The most used ones for our team:
 
 - **Stage 1 — 8-K monitoring (daily):** detects acquisitions when they're
   announced. Captures headline value, structure (cash vs stock), target name,
-  dates. Appends one row per acquisition with `stage = "announced"`.
+  and dates.
 - **Stage 2 — 10-Q / 10-K reconciliation (weekly):** parses the Business
-  Combinations footnote in subsequent quarterly/annual filings. Updates the
-  existing row with the real purchase-price allocation: cash consideration,
-  stock fair value, contingent consideration (earnouts), escrow, and a best-
-  estimate "true cash to cap table" figure. Flips `stage` to
-  `"closed-reconciled"`.
+  Combinations / Acquisitions footnote and Subsequent Events section in
+  subsequent quarterly/annual filings. Updates existing rows with the real
+  purchase-price allocation: cash consideration, stock fair value, contingent
+  consideration (earn-outs), and the cap-table total.
 
 Re-running is idempotent — `data/state.json` tracks the last processed
-filing per ticker per form type.
-
-## Output modes
-
-Set `OUTPUT_MODE` in `.env`:
-
-- **`csv` (default, recommended for enterprise / first-run):** writes to
-  `data/acquisitions.csv`. No Google API setup required. You paste into
-  your Sheet manually after each run.
-- **`sheets`:** writes directly to a Google Sheet via service-account auth.
-  Requires GCP project + service account JSON. Use this if your enterprise
-  IT policy allows external service-account sharing on Sheets.
-
-CSV mode is the safest starting point. Switch to Sheets later if you want
-fully unattended automation.
+filing per ticker per form type. The CSV is overwritten each run with the
+full current dataset (not just new rows), so a fresh `make summary` always
+reflects the latest state.
 
 ## Setup
 
 ### 1. Install
 
 ```bash
-git clone <this repo>
-cd ma_comp_tracker
+make setup
+```
+
+Or manually:
+
+```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 cp .env.example .env
@@ -75,37 +65,17 @@ Fill in `.env`:
 
 - `SEC_API_KEY`: get at https://sec-api.io/profile
 - `OPENROUTER_API_KEY`: get at https://openrouter.ai/keys
+- `SEC_USER_AGENT`: your contact email. Required by SEC; each user should
+  set their own (SEC throttles by UA).
 - `OPENROUTER_MODEL`: leave as `deepseek/deepseek-chat` (cheapest), or
   override with e.g. `anthropic/claude-sonnet-4.5` for higher accuracy.
-- `OUTPUT_MODE`: `csv` (default) or `sheets`.
+- `MAX_ACQUISITION_AGE_DAYS`: how recent an acquisition must be to land
+  in the CSV. Default 180 (~ two quarters).
+- `MAX_WORKERS`: number of parallel ticker workers. Default 8.
 
-If `OUTPUT_MODE=sheets`, also set:
-- `GOOGLE_SHEET_ID`: the long string from the Sheet URL between `/d/` and `/edit`
-- `GOOGLE_SHEET_TAB`: the worksheet name (default `M&A Comps`)
+### 3. Configure the comp set
 
-### 3. Google Sheets service account — SHEETS MODE ONLY (skip if using CSV)
-
-1. Go to https://console.cloud.google.com/iam-admin/serviceaccounts and pick
-   or create a project.
-2. Click **Create Service Account**, give it a name like
-   `ma-comp-tracker-writer`, click **Create and Continue** through the
-   permission steps (no roles needed for Sheets-only access).
-3. After creating, click into the service account, go to the **Keys** tab,
-   **Add Key** → **JSON**. A JSON file downloads.
-4. Save the JSON file as `service_account.json` in the project root, or
-   set `GOOGLE_SERVICE_ACCOUNT_JSON` in `.env` to wherever you save it.
-5. **Enable the Sheets API** for the project at
-   https://console.cloud.google.com/apis/library/sheets.googleapis.com
-6. Open the JSON file, copy the `client_email` field (looks like
-   `ma-comp-tracker-writer@your-project.iam.gserviceaccount.com`).
-7. Open your Google Sheet → **Share** → paste the service account email
-   → set to **Editor** → Send.
-
-The service account can now read and write to the Sheet.
-
-### 4. Configure the comp set
-
-Edit `src/config.py`, modify the `COMP_SET` list. Each entry is
+Edit `src/config.py`, modify `COMP_SET`. Each entry is
 `("TICKER", "Human-readable name")`. The ticker must match the company's
 SEC EDGAR ticker.
 
@@ -114,18 +84,14 @@ SEC EDGAR ticker.
 ### Manual
 
 ```bash
-.venv/bin/python -m src.monitor_8k    # daily, fast
-.venv/bin/python -m src.monitor_10q   # weekly, slower (parses footnotes)
+make run               # both monitors + summary
+make run-8k            # 8-K only
+make run-10q           # 10-Q / 10-K only
 ```
 
-First run looks back 90 days (8-K) or 180 days (10-Q). Subsequent runs
-only process filings newer than what's in `data/state.json`.
-
-**CSV mode workflow:** after each run, open `data/acquisitions.csv` and
-either copy-paste into your Sheet, or use Google Sheets' **File → Import**
-to bulk-replace the contents of a tab. The CSV is overwritten each run
-with the full current dataset (not just new rows), so a fresh import always
-reflects the latest state.
+First run looks back `MAX_ACQUISITION_AGE_DAYS + 14` days for 8-Ks and
+`MAX_ACQUISITION_AGE_DAYS + 90` days for 10-Q/10-K. Subsequent runs only
+process filings newer than what's in `data/state.json`.
 
 ### Scheduled
 
@@ -133,80 +99,69 @@ Add to crontab (`crontab -e`):
 
 ```cron
 # Daily at 7:30am ET (12:30 UTC) — catches overnight 8-K filings
-30 12 * * * cd /path/to/ma_comp_tracker && .venv/bin/python -m src.monitor_8k >> data/8k.log 2>&1
+30 12 * * * cd /path/to/ma_comp_tracker && make run-8k >> data/8k.log 2>&1
 
 # Weekly Monday at 8am ET — reconcile from new 10-Qs
-0 13 * * 1 cd /path/to/ma_comp_tracker && .venv/bin/python -m src.monitor_10q >> data/10q.log 2>&1
+0 13 * * 1 cd /path/to/ma_comp_tracker && make run-10q >> data/10q.log 2>&1
 ```
 
-Or run as a GitHub Action with the same schedule (see `tokentape/.github/workflows/daily.yml` for a reference workflow pattern; secrets become the env vars listed above).
-
-## Sheet columns
-
-The Sheet (or the configured tab) gets these columns written on first run:
+## CSV columns
 
 | Column | Filled by | Notes |
 |---|---|---|
-| `acquirer` | both stages | Human name from `COMP_SET` |
-| `acquirer_ticker` | both stages | |
-| `target` | both stages | LLM-extracted target company |
-| `announced_date` | 8-K | |
-| `closed_date` | 10-Q | |
-| `headline_value_usd` | 8-K, refined by 10-Q | Announced total deal size |
-| `cash_consideration_usd` | 10-Q | |
-| `stock_consideration_usd` | 10-Q | |
-| `contingent_usd` | 10-Q | Earnout fair value |
-| `true_cash_to_capital_usd` | 10-Q | LLM-estimated net cash to target shareholders |
-| `structure` | 8-K | `all-cash` / `stock-and-cash` / `all-stock` |
-| `stage` | both | `announced` or `closed-reconciled` |
-| `source_8k_url` | 8-K | Click-through to EDGAR filing index |
-| `source_10q_url` | 10-Q | |
-| `notes` | both | LLM-extracted prose summary |
-| `last_updated` | both | ISO date |
+| `Company` | both stages | LLM-extracted target name |
+| `Acquirer` | both stages | Human name from `COMP_SET` |
+| `Date` | both stages | "Mon YYYY" (e.g. "Feb 2026") |
+| `Motivation` | blank | Manual fill |
+| `$ to cap table` | both | Best estimate of total value to cap-table holders |
+| `Revenue ($)` | blank | Not in SEC filings |
+| `Engineers` | blank | Not in SEC filings |
+| `$ / Engineer` | blank | Sheet-side formula |
+| `Rev. Multiple` | blank | Sheet-side formula |
+| `Notes` | both | LLM summary + structure / component breakdown |
+| `Source` | both | Filing index URL (8-K initially, replaced by 10-Q on reconciliation) |
 
 ## Cost
 
-Per run cost is roughly:
-- 8-K monitoring: ~$0.001-0.005 per ticker per run (only filings with
-  acquisition-like 8-K items hit the LLM; most don't)
-- 10-Q monitoring: ~$0.01-0.03 per filing parsed (footnote text is larger)
+At default settings (DeepSeek V4-Flash on OpenRouter, 15-ticker comp set):
 
-With 15 tickers in the comp set, expect under $0.50/month total at default
-DeepSeek pricing.
+- 8-K monitor: ~$0.001-0.005 per ticker per run (item-code pre-filter
+  skips ~60% of 8-Ks before any LLM call)
+- 10-Q monitor: ~$0.01-0.03 per filing parsed (footnote text is larger)
+
+Under $0.50/month total for a typical comp set on a daily cadence.
 
 ## Limitations
 
 - **LLM extraction is not a substitute for an analyst's eye.** Spot-check
-  the rows it produces before using them in IC discussions. The `notes`
-  column captures details the structured fields can miss.
-- **Some 8-Ks announce acquisitions vaguely** (e.g. press release attached
-  as Exhibit 99.1 with the real details). The text we feed the LLM is the
-  primary document, not exhibits, so headline values for those will be
-  blank until the 10-Q updates them.
+  rows before using them in IC discussions. The `Notes` column captures
+  details the structured fields miss.
+- **Some 8-Ks announce acquisitions vaguely** (real deal terms in an
+  Exhibit 99.1 press release). Values for those may stay blank until the
+  10-Q reconciliation pass updates them.
 - **The Business Combinations footnote isn't a standardized SEC section,**
-  so location heuristics in `sec_client.locate_business_combinations_section`
-  occasionally miss. When that happens, the LLM gets a fallback window
-  around the financial statements and usually still finds the data.
+  so the locator heuristic occasionally misses or picks a related section
+  (intangibles, goodwill). Use `make inspect TICKER=XXX TERM=YYY` to
+  diagnose.
 - **Stock-consideration fair values are recorded at closing date,** not the
   announcement-date stock price. A deal announced at $5B might land in the
   10-Q at $4.2B if the acquirer's stock dropped between sign and close.
 
 ## Adding new comp set tickers
 
-Edit `src/config.py`, add the ticker. On the next run, `state.json` will
-have no entry for that ticker, so the monitor backfills 90 days of 8-Ks
-(or 180 days of 10-Qs) automatically.
+Edit `COMP_SET` in `src/config.py`. On the next run, `state.json` will
+have no entry for that ticker, so the monitor backfills automatically.
 
 ## Troubleshooting
 
-- **"service_account.json does not exist":** the file path in
-  `GOOGLE_SERVICE_ACCOUNT_JSON` is wrong, or you haven't downloaded the
-  service-account key yet. See setup step 3.
-- **"This service account does not have access to spreadsheet …":** you
-  didn't share the Sheet with the service account email. See setup step 7.
 - **Empty filing text from sec-api:** EDGAR occasionally rate-limits. The
-  client retries 3 times with backoff; persistent empty responses usually
-  indicate the document URL has changed format. Inspect the URL manually.
+  client retries 3 times with backoff. Persistent empty responses usually
+  mean a URL format change — inspect manually.
 - **LLM returns garbage JSON:** if the model under `OPENROUTER_MODEL`
   doesn't reliably emit JSON, try `anthropic/claude-sonnet-4.5` or
-  `openai/gpt-5-mini` as a higher-quality fallback.
+  `openai/gpt-5-mini` as a higher-accuracy fallback.
+- **Missing an acquisition you know happened:** use the diagnostic script:
+  ```bash
+  make inspect TICKER=SNOW TERM=Natoma   # show all "Natoma" mentions in SNOW's latest 10-Q
+  make inspect-8k TICKER=SNOW            # walk recent 8-Ks and the LLM's verdict on each
+  ```

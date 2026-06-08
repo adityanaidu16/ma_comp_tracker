@@ -19,7 +19,7 @@ import sys
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from . import config, sec_client, llm_parser, state, writer as sheets_client
+from . import config, sec_client, llm_parser, state, csv_writer
 
 
 # 8-K items that commonly carry acquisition disclosures
@@ -138,8 +138,8 @@ def run() -> int:
     lookback_days = (config.MAX_ACQUISITION_AGE_DAYS or 90) + 14
     default_since = (dt.date.today() - dt.timedelta(days=lookback_days)).isoformat()
 
-    ws = sheets_client.open_sheet()
-    sheets_client.ensure_header(ws)
+    ws = csv_writer.open_sheet()
+    csv_writer.ensure_header(ws)
 
     max_workers = max(1, int(os.getenv("MAX_WORKERS", "8")))
 
@@ -165,11 +165,11 @@ def run() -> int:
                 total[k] += result[k]
             # Serialize writes in the main thread to avoid races on the CSV/Sheet
             for row, acc_no, filed_at, target, structure in result["rows"]:
-                existing = sheets_client.find_row_index(ws, row["Acquirer"], target)
+                existing = csv_writer.find_row_index(ws, row["Acquirer"], target)
                 if existing:
                     print(f"[{result['ticker']}]   {acc_no} ({filed_at}): {target} already tracked (row {existing})")
                 else:
-                    sheets_client.append_acquisition(ws, row)
+                    csv_writer.append_acquisition(ws, row)
                     new_count += 1
                     val = row["$ to cap table"]
                     val_s = f"${val:,.0f}" if isinstance(val, (int, float)) else (val or "n/a")

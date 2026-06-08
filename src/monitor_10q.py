@@ -18,7 +18,7 @@ import sys
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from . import config, sec_client, llm_parser, state, writer as sheets_client
+from . import config, sec_client, llm_parser, state, csv_writer
 
 
 def _process_ticker(ticker: str, label: str, since_iso: str, last_acc: str | None):
@@ -116,8 +116,8 @@ def run() -> int:
     lookback_days = (config.MAX_ACQUISITION_AGE_DAYS or 180) + 90
     default_since = (dt.date.today() - dt.timedelta(days=lookback_days)).isoformat()
 
-    ws = sheets_client.open_sheet()
-    sheets_client.ensure_header(ws)
+    ws = csv_writer.open_sheet()
+    csv_writer.ensure_header(ws)
 
     max_workers = max(1, int(os.getenv("MAX_WORKERS", "8")))
 
@@ -143,13 +143,13 @@ def run() -> int:
             for k in ("analyzed", "errors"):
                 total[k] += result[k]
             for row, acc_no, filed_at, target in result["rows"]:
-                idx = sheets_client.find_row_index(ws, row["Acquirer"], target)
+                idx = csv_writer.find_row_index(ws, row["Acquirer"], target)
                 if idx:
-                    sheets_client.update_acquisition(ws, row, idx)
+                    csv_writer.update_acquisition(ws, row, idx)
                     updated += 1
                     print(f"[{result['ticker']}]   {acc_no} ({filed_at}): updated row {idx} for {target}")
                 else:
-                    sheets_client.append_acquisition(ws, row)
+                    csv_writer.append_acquisition(ws, row)
                     added += 1
                     print(f"[{result['ticker']}]   {acc_no} ({filed_at}): added (no prior 8-K row) for {target}")
             if result["newest_acc"]:

@@ -142,30 +142,64 @@ def fetch_filing_text(url: str, timeout: float = 30.0) -> str:
 def locate_business_combinations_section(filing_text: str) -> str:
     """Slice the filing text to the Business Combinations / Acquisitions footnote.
 
-    10-Q and 10-K footnotes don't have standardized section codes, so we use
-    heading-text patterns. If we can't find a clear header, return a 30K-char
-    window around the first 'Business Combinations' mention (LLM will sort out).
+    Strategy: find ALL mentions of "Business Combinations" / "Acquisitions" /
+    similar, score each by likelihood of being the actual footnote (vs the
+    accounting-policies boilerplate or a forward-looking risk factor), pick
+    the highest-scoring one and return a 40K-char window from there.
     """
     if not filing_text:
         return ""
-    # Look for footnote headers, ordered by specificity
-    candidates = [
-        r"(?:^|\.)\s*\d{1,2}\.\s*Business\s+Combinations",
-        r"(?:^|\.)\s*Note\s+\d{1,2}[\.:\)]?\s*Business\s+Combinations",
-        r"(?:^|\.)\s*\d{1,2}\.\s*Acquisitions",
-        r"(?:^|\.)\s*Note\s+\d{1,2}[\.:\)]?\s*Acquisitions",
+
+    # Find candidate locations of acquisition-related headings
+    patterns = [
+        # Numbered footnotes / notes
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Business\s+Combinations",  10),
+        (r"\b\d{1,2}\s*[\.\)]\s+Business\s+Combinations",          10),
+        (r"\bNote\s+\d{1,2}[\.:\)\s\-—]+Acquisitions?\b",           8),
+        (r"\b\d{1,2}\s*[\.\)]\s+Acquisitions?\b",                   8),
+        # Inline / standalone headings
+        (r"\bBusiness\s+Combinations\b",                            3),
+        (r"\bRecent\s+Acquisitions?\b",                             6),
+        (r"\bAcquisitions?\s+and\s+Divestitures?\b",                7),
+        (r"\bCompleted\s+Acquisitions?\b",                          6),
     ]
-    for pat in candidates:
-        m = re.search(pat, filing_text, flags=re.IGNORECASE)
-        if m:
-            start = m.start()
-            # Take 25K chars from the heading; usually covers the whole footnote
-            return filing_text[start:start + 25_000]
-    # Fallback: search for first inline mention and grab a window
-    m = re.search(r"Business\s+Combinations", filing_text, flags=re.IGNORECASE)
-    if m:
-        start = max(0, m.start() - 1_000)
-        return filing_text[start:start + 30_000]
-    # Last resort: return the financial-statements area heuristically (middle 40%)
-    mid = len(filing_text) // 2
-    return filing_text[max(0, mid - 15_000):mid + 15_000]
+
+    candidates: list[tuple[int, int]] = []  # (offset, score)
+    for pat, base_score in patterns:
+        for m in re.finditer(pat, filing_text, flags=re.IGNORECASE):
+            candidates.append((m.start(), base_score))
+
+    if not candidates:
+        # Last resort: financial-statements area heuristically (back half of doc)
+        mid = int(len(filing_text) * 0.55)
+        return filing_text[max(0, mid - 20_000):mid + 20_000]
+
+    # Boost candidates that appear after the front-matter (typical 10-Q has
+    # boilerplate, risk-factor language, then financial statements + notes in
+    # back half). Penalize matches very early in the document.
+    n = len(filing_text)
+    scored: list[tuple[int, int]] = []
+    for off, base in candidates:
+        position_score = 0
+        if off > n * 0.35:
+            position_score += 4
+        if off > n * 0.55:
+            position_score += 4
+        # Bonus if the surrounding 4K-char window contains the kind of
+        # purchase-price language that footnotes have (cash consideration,
+        # fair value, goodwill, intangible assets). Forward-looking sections
+        # mostly don't have these clustered together.
+        window = filing_text[off:off + 4_000].lower()
+        keyword_score = 0
+        for kw in ("cash consideration", "purchase price", "fair value",
+                   "goodwill", "intangible assets", "contingent consideration"):
+            if kw in window:
+                keyword_score += 1
+        scored.append((off, base + position_score + keyword_score))
+
+    # Pick highest-scored; tie-break on later position (footnote is usually
+    # the latest such mention).
+    scored.sort(key=lambda x: (x[1], x[0]), reverse=True)
+    best_off = scored[0][0]
+    # Include a little context before the heading + 40K after
+    return filing_text[max(0, best_off - 500):best_off + 40_000]

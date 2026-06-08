@@ -107,11 +107,19 @@ def extract_8k_acquisition_announcement(text: str) -> dict | None:
 
 # --- 10-Q / 10-K extractor -------------------------------------------------
 
-_10Q_SYSTEM = """You analyze the Business Combinations footnote in SEC 10-Q
-and 10-K filings to extract purchase-price-allocation details for acquisitions
-the filing company completed.
+_10Q_SYSTEM = """You analyze the Business Combinations / Acquisitions
+footnote in SEC 10-Q and 10-K filings to extract purchase-price details for
+acquisitions the filing company has completed.
 
-For each acquisition the company describes in the footnote, return a JSON list:
+EXTRACT ANY ACQUISITION the footnote mentions, including:
+- Acquisitions closed in the current reporting period
+- Acquisitions closed in prior periods that are still being discussed
+  (e.g. for goodwill measurement, purchase price allocation adjustments,
+  earn-out remeasurements, integration disclosures)
+- Acquisitions reported in summary form ("During the year we acquired X, Y, Z
+  for aggregate consideration of $...")
+
+Return JSON:
 
 {
   "acquisitions": [
@@ -131,10 +139,20 @@ For each acquisition the company describes in the footnote, return a JSON list:
   ]
 }
 
-If the footnote describes no acquisitions, return: {"acquisitions": []}
+Rules:
+- If the footnote describes NO acquisitions at all (the only mentions are
+  generic accounting-policy language about how the company *would* account
+  for a hypothetical future acquisition), return {"acquisitions": []}.
+- If only the aggregate consideration for multiple deals is disclosed
+  (without per-deal breakdown), still emit one row per target named, with
+  the aggregate value in the notes field.
+- If the same acquisition is just briefly referenced for ongoing goodwill
+  or PPA adjustments, still include it with whatever values are available.
+  Set notes to "ongoing PPA / goodwill reference, originally disclosed in
+  [prior period]" so a reviewer knows.
 
 "true_cash_to_capital_usd" should be your best estimate of net cash that
-actually reached the target's cap table holders, defined as:
+reached the target's cap table holders, defined as:
   cash_consideration - escrow_or_holdback - working_capital_adjustment - debt_assumed
 
 If those components aren't broken out, set true_cash_to_capital_usd to the

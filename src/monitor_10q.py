@@ -1,0 +1,100 @@
+"""10-Q / 10-K monitoring entrypoint.
+
+For each ticker in the comp set, list 10-Q and 10-K filings filed since last
+run, locate the Business Combinations footnote, ask the LLM to extract the
+purchase-price breakdown, and update existing rows in the Google Sheet with
+the reconciled numbers (cash consideration, stock, contingent, true cash to
+cap table).
+
+Run with: python -m src.monitor_10q
+"""
+from __future__ import annotations
+
+import datetime as dt
+import sys
+import traceback
+
+from . import config, sec_client, llm_parser, sheets_client, state
+
+
+def run() -> int:
+    s = state.load()
+    today = dt.date.today().isoformat()
+    # On first run, look back 180 days (one or two reporting periods).
+    default_since = (dt.date.today() - dt.timedelta(days=180)).isoformat()
+
+    ws = sheets_client.open_sheet()
+    sheets_client.ensure_header(ws)
+
+    updated = 0
+    added   = 0
+    err_count = 0
+
+    for ticker, label in config.COMP_SET:
+        last_acc = state.last_seen(s, ticker, "10-Q")
+        try:
+            filings = sec_client.list_recent_10qs(ticker, since_iso=default_since, limit=6)
+        except Exception as e:
+            print(f"[{ticker}] list_recent_10qs error: {e}", file=sys.stderr)
+            err_count += 1
+            continue
+
+        for f in filings:
+            if last_acc and f.accession_no == last_acc:
+                break
+            try:
+                full = sec_client.fetch_filing_text(f.primary_doc_url)
+                if not full:
+                    print(f"[{ticker}] empty text for {f.accession_no}", file=sys.stderr)
+                    continue
+                section = sec_client.locate_business_combinations_section(full)
+                if not section:
+                    continue
+                data = llm_parser.extract_10q_business_combination(section)
+                if not data or not data.get("acquisitions"):
+                    continue
+                for acq in data["acquisitions"]:
+                    target = acq.get("target") or ""
+                    if not target:
+                        continue
+                    row = {
+                        "acquirer": label,
+                        "acquirer_ticker": ticker,
+                        "target": target,
+                        "closed_date": acq.get("closed_date") or "",
+                        "headline_value_usd": acq.get("total_consideration_usd") or "",
+                        "cash_consideration_usd": acq.get("cash_consideration_usd") or "",
+                        "stock_consideration_usd": acq.get("stock_consideration_usd") or "",
+                        "contingent_usd": acq.get("contingent_consideration_usd") or "",
+                        "true_cash_to_capital_usd": acq.get("true_cash_to_capital_usd") or "",
+                        "stage": "closed-reconciled",
+                        "source_10q_url": f.filing_url,
+                        "notes": acq.get("notes") or "",
+                        "last_updated": today,
+                    }
+                    idx = sheets_client.find_row_index(ws, ticker, target)
+                    if idx:
+                        sheets_client.update_acquisition(ws, row, idx)
+                        updated += 1
+                        print(f"[{ticker}] updated row {idx}: {target}")
+                    else:
+                        # No prior 8-K row; append as a fresh closed-reconciled row.
+                        sheets_client.append_acquisition(ws, row)
+                        added += 1
+                        print(f"[{ticker}] added (no prior 8-K): {target}")
+            except Exception as e:
+                print(f"[{ticker}] error processing {f.accession_no}: {e}", file=sys.stderr)
+                traceback.print_exc()
+                err_count += 1
+                continue
+
+        if filings:
+            state.mark_seen(s, ticker, "10-Q", filings[0].accession_no)
+
+    state.save(s)
+    print(f"\nDone: {updated} rows updated, {added} new rows, {err_count} errors.")
+    return 0 if err_count == 0 else 1
+
+
+if __name__ == "__main__":
+    sys.exit(run())

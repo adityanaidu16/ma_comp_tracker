@@ -63,14 +63,20 @@ def append_acquisition(ws: _CsvBuffer, row: dict) -> None:
     ws._save()
 
 
-def find_row_index(ws: _CsvBuffer, acquirer_ticker: str, target: str) -> int | None:
-    """Return 1-indexed row (row 1 = header) matching this acquirer + target."""
+def find_row_index(ws: _CsvBuffer, acquirer_name: str, target: str) -> int | None:
+    """Return 1-indexed row (row 1 = header) matching this Acquirer + Company.
+
+    Matches case-insensitive on the human-friendly Acquirer name (e.g. "Cisco")
+    and case-insensitive substring on Company (target) to tolerate slight
+    variations between 8-K and 10-Q phrasing.
+    """
     if not target:
         return None
-    target_lc = target.lower()
+    target_lc = target.strip().lower()
+    acq_lc = acquirer_name.strip().lower()
     for i, r in enumerate(ws.rows, start=2):
-        if str(r.get("acquirer_ticker", "")).strip().upper() == acquirer_ticker.upper():
-            row_target = str(r.get("target", "")).lower()
+        if str(r.get("Acquirer", "")).strip().lower() == acq_lc:
+            row_target = str(r.get("Company", "")).strip().lower()
             if row_target and (target_lc in row_target or row_target in target_lc):
                 return i
     return None

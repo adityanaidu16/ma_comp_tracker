@@ -64,34 +64,37 @@ def run() -> int:
                     print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): not an acquisition")
                     skipped_count += 1
                     continue
+                target = ann.get("target", "")
+                if not target:
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): acquisition flagged but no target name extracted, skipped")
+                    continue
+                date_iso = ann.get("announced_date") or f.filed_at
+                structure = ann.get("structure", "unknown")
+                summary  = ann.get("summary", "")
+                notes = f"{summary} (Structure: {structure})" if summary else f"Structure: {structure}"
                 row = {
-                    "acquirer": label,
-                    "acquirer_ticker": ticker,
-                    "target": ann.get("target", ""),
-                    "announced_date": ann.get("announced_date", f.filed_at),
-                    "closed_date": ann.get("closed_date", "") or "",
-                    "headline_value_usd": ann.get("headline_value_usd", "") or "",
-                    "cash_consideration_usd": ann.get("cash_component_usd", "") or "",
-                    "stock_consideration_usd": ann.get("stock_component_usd", "") or "",
-                    "contingent_usd": "",
-                    "true_cash_to_capital_usd": "",
-                    "structure": ann.get("structure", "unknown"),
-                    "stage": "announced",
-                    "source_8k_url": f.filing_url,
-                    "source_10q_url": "",
-                    "notes": ann.get("summary", ""),
-                    "last_updated": today,
+                    "Company":        target,
+                    "Acquirer":       label,
+                    "Date":           config.format_month_year(date_iso),
+                    "Motivation":     "",
+                    "$ to cap table": config.pick_cap_table_value(ann),
+                    "Revenue ($)":    "",
+                    "Engineers":      "",
+                    "$ / Engineer":   "",
+                    "Rev. Multiple":  "",
+                    "Notes":          notes,
+                    "Source":         f.filing_url,
                 }
                 # Don't double-write if target already exists for this acquirer
-                existing = sheets_client.find_row_index(ws, ticker, row["target"])
+                existing = sheets_client.find_row_index(ws, label, target)
                 if existing:
-                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): {row['target']} already tracked (row {existing})")
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): {target} already tracked (row {existing})")
                 else:
                     sheets_client.append_acquisition(ws, row)
                     new_count += 1
-                    val = row["headline_value_usd"]
+                    val = row["$ to cap table"]
                     val_s = f"${val:,.0f}" if isinstance(val, (int, float)) else (val or "n/a")
-                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): ACQUISITION → {row['target']} ({val_s}, {row['structure']})")
+                    print(f"[{ticker}]   {f.accession_no} ({f.filed_at}): ACQUISITION → {target} ({val_s}, {structure})")
             except Exception as e:
                 print(f"[{ticker}] error processing {f.accession_no}: {e}", file=sys.stderr)
                 traceback.print_exc()

@@ -62,19 +62,21 @@ def append_acquisition(ws, row: dict) -> None:
     ws.append_row(_row_dict_to_list(row), value_input_option="USER_ENTERED")
 
 
-def find_row_index(ws, acquirer_ticker: str, target: str) -> int | None:
-    """Return the 1-indexed row in the Sheet matching (acquirer_ticker, target).
+def find_row_index(ws, acquirer_name: str, target: str) -> int | None:
+    """Return the 1-indexed row in the Sheet matching (Acquirer, Company).
 
-    Match is case-insensitive substring on target name to tolerate slight
-    discrepancies between 8-K and 10-Q phrasing (e.g. "Splunk Inc." vs "Splunk").
+    Case-insensitive exact match on Acquirer (human name) and case-insensitive
+    substring match on Company to tolerate slight 8-K vs 10-Q phrasing
+    differences (e.g. "Splunk Inc." vs "Splunk").
     """
     if not target:
         return None
     rows = ws.get_all_records()
-    target_lc = target.lower()
+    target_lc = target.strip().lower()
+    acq_lc = acquirer_name.strip().lower()
     for i, r in enumerate(rows, start=2):
-        if str(r.get("acquirer_ticker", "")).strip().upper() == acquirer_ticker.upper():
-            row_target = str(r.get("target", "")).lower()
+        if str(r.get("Acquirer", "")).strip().lower() == acq_lc:
+            row_target = str(r.get("Company", "")).strip().lower()
             if row_target and (target_lc in row_target or row_target in target_lc):
                 return i
     return None

@@ -71,22 +71,31 @@ def run() -> int:
                     target = acq.get("target") or ""
                     if not target:
                         continue
+                    date_iso = acq.get("closed_date") or f.filed_at
+                    notes_parts = []
+                    if acq.get("notes"):
+                        notes_parts.append(str(acq["notes"]))
+                    bits = []
+                    for k, label_bit in [
+                        ("cash_consideration_usd",       "cash"),
+                        ("stock_consideration_usd",      "stock"),
+                        ("contingent_consideration_usd", "contingent"),
+                    ]:
+                        v = acq.get(k)
+                        if isinstance(v, (int, float)) and v > 0:
+                            bits.append(f"{label_bit} ${v:,.0f}")
+                    if bits:
+                        notes_parts.append("Components: " + ", ".join(bits))
+                    notes = " | ".join(notes_parts)
                     row = {
-                        "acquirer": label,
-                        "acquirer_ticker": ticker,
-                        "target": target,
-                        "closed_date": acq.get("closed_date") or "",
-                        "headline_value_usd": acq.get("total_consideration_usd") or "",
-                        "cash_consideration_usd": acq.get("cash_consideration_usd") or "",
-                        "stock_consideration_usd": acq.get("stock_consideration_usd") or "",
-                        "contingent_usd": acq.get("contingent_consideration_usd") or "",
-                        "true_cash_to_capital_usd": acq.get("true_cash_to_capital_usd") or "",
-                        "stage": "closed-reconciled",
-                        "source_10q_url": f.filing_url,
-                        "notes": acq.get("notes") or "",
-                        "last_updated": today,
+                        "Company":        target,
+                        "Acquirer":       label,
+                        "Date":           config.format_month_year(date_iso),
+                        "$ to cap table": config.pick_cap_table_value(acq),
+                        "Notes":          notes,
+                        "Source":         f.filing_url,
                     }
-                    idx = sheets_client.find_row_index(ws, ticker, target)
+                    idx = sheets_client.find_row_index(ws, label, target)
                     if idx:
                         sheets_client.update_acquisition(ws, row, idx)
                         updated += 1

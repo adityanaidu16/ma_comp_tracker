@@ -6,6 +6,7 @@ SEC EDGAR (which usually means the listed ticker on the primary exchange).
 """
 from __future__ import annotations
 
+import datetime as dt
 import os
 from pathlib import Path
 
@@ -53,25 +54,22 @@ GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv(
 OPENROUTER_MODEL       = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat").strip()
 
 # --- sheet column layout ---------------------------------------------------
-# These are the columns written to the Sheet (in order). The first run will
-# create the header row if the Sheet is empty.
+# Columns written to the CSV / Sheet, in order. Match the user's existing
+# M&A comp tracker schema. Most are intentionally left blank when not in
+# SEC filings (Motivation, Revenue, Engineer headcount, derived ratios)
+# and can be filled in manually.
 SHEET_COLUMNS = [
-    "acquirer",                 # e.g. "Cisco"
-    "acquirer_ticker",          # e.g. "CSCO"
-    "target",                   # acquired company name
-    "announced_date",           # ISO YYYY-MM-DD
-    "closed_date",              # ISO YYYY-MM-DD (or empty until 10-Q)
-    "headline_value_usd",       # announced total deal value
-    "cash_consideration_usd",   # cash paid (from 10-Q)
-    "stock_consideration_usd",  # stock fair value (from 10-Q)
-    "contingent_usd",           # earnout fair value (from 10-Q)
-    "true_cash_to_capital_usd", # cash - escrow - WC adj - debt assumed
-    "structure",                # "all-cash", "stock-and-cash", "all-stock"
-    "stage",                    # "announced" / "closed-reconciled"
-    "source_8k_url",
-    "source_10q_url",
-    "notes",
-    "last_updated",
+    "Company",          # target company (from filing)
+    "Acquirer",         # human-friendly acquirer name from COMP_SET
+    "Date",             # "Mon YYYY" (e.g. "Feb 2026")
+    "Motivation",       # blank — analyst fills in
+    "$ to cap table",   # best estimate of net cash to target shareholders
+    "Revenue ($)",      # blank — typically not in 10-Q
+    "Engineers",        # blank — not in SEC filings
+    "$ / Engineer",     # blank — derived in Sheet
+    "Rev. Multiple",    # blank — derived in Sheet
+    "Notes",            # LLM summary + reconciliation notes
+    "Source",           # SEC filing URL (8-K first, replaced by 10-Q on reconciliation)
 ]
 
 def require(name: str, value: str) -> str:
@@ -80,3 +78,36 @@ def require(name: str, value: str) -> str:
             f"{name} is empty. Set it in .env (see .env.example) before running."
         )
     return value
+
+
+def format_month_year(iso_date: str) -> str:
+    """Convert 'YYYY-MM-DD' to 'Mon YYYY' (e.g. '2026-02-05' -> 'Feb 2026').
+
+    Returns the input unchanged if it can't be parsed; returns '' for empty.
+    """
+    if not iso_date:
+        return ""
+    try:
+        d = dt.date.fromisoformat(str(iso_date)[:10])
+        return d.strftime("%b %Y")
+    except (ValueError, TypeError):
+        return str(iso_date)
+
+
+def pick_cap_table_value(data: dict) -> float | str:
+    """Pick the best 'cash that went to the cap table' value from LLM extraction.
+
+    Priority: 10-Q true_cash_to_capital > 10-Q cash_consideration > 10-Q total >
+    8-K cash_component > 8-K headline. Returns '' if nothing usable.
+    """
+    for key in (
+        "true_cash_to_capital_usd",
+        "cash_consideration_usd",
+        "total_consideration_usd",
+        "cash_component_usd",
+        "headline_value_usd",
+    ):
+        v = data.get(key)
+        if isinstance(v, (int, float)) and v > 0:
+            return v
+    return ""

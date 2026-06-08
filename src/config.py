@@ -132,18 +132,38 @@ def is_recent_enough(date_str, max_days: int | None = None,
 
 
 def pick_cap_table_value(data: dict) -> float | str:
-    """Pick the best 'cash that went to the cap table' value from LLM extraction.
+    """Pick the best 'total value to cap table' value from LLM extraction.
 
-    Priority: 10-Q true_cash_to_capital > 10-Q cash_consideration > 10-Q total >
-    8-K cash_component > 8-K headline. Returns '' if nothing usable.
+    M&A convention: "$ to cap table" = total deal value transferred to target
+    shareholders (cash + stock at fair value + contingent), not cash alone.
+    For Snowflake/Observe: $596.2M (= $286.2M cash + $285.3M stock + escrow),
+    not the $286.2M cash component.
+
+    Priority:
+      1. total_consideration_usd (10-Q, disclosed total)
+      2. headline_value_usd (8-K, announced total)
+      3. Sum of (cash + stock + contingent) components if any are present
+      4. cash_consideration alone (worst case — better than nothing)
+      5. true_cash_to_capital (cash net of escrow/WC/debt — cash-only fallback)
+
+    Returns '' if nothing usable.
     """
-    for key in (
-        "true_cash_to_capital_usd",
-        "cash_consideration_usd",
-        "total_consideration_usd",
-        "cash_component_usd",
-        "headline_value_usd",
-    ):
+    # 1-2: prefer disclosed totals
+    for key in ("total_consideration_usd", "headline_value_usd"):
+        v = data.get(key)
+        if isinstance(v, (int, float)) and v > 0:
+            return v
+    # 3: sum of components
+    summed = 0.0
+    for key in ("cash_consideration_usd", "stock_consideration_usd",
+                "contingent_consideration_usd"):
+        v = data.get(key)
+        if isinstance(v, (int, float)) and v > 0:
+            summed += float(v)
+    if summed > 0:
+        return summed
+    # 4-5: cash-only fallback
+    for key in ("cash_component_usd", "cash_consideration_usd", "true_cash_to_capital_usd"):
         v = data.get(key)
         if isinstance(v, (int, float)) and v > 0:
             return v

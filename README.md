@@ -19,6 +19,20 @@ via OpenRouter by default), and writes the results to a Google Sheet.
 Re-running is idempotent — `data/state.json` tracks the last processed
 filing per ticker per form type.
 
+## Output modes
+
+Set `OUTPUT_MODE` in `.env`:
+
+- **`csv` (default, recommended for enterprise / first-run):** writes to
+  `data/acquisitions.csv`. No Google API setup required. You paste into
+  your Sheet manually after each run.
+- **`sheets`:** writes directly to a Google Sheet via service-account auth.
+  Requires GCP project + service account JSON. Use this if your enterprise
+  IT policy allows external service-account sharing on Sheets.
+
+CSV mode is the safest starting point. Switch to Sheets later if you want
+fully unattended automation.
+
 ## Setup
 
 ### 1. Install
@@ -37,13 +51,15 @@ Fill in `.env`:
 
 - `SEC_API_KEY`: get at https://sec-api.io/profile
 - `OPENROUTER_API_KEY`: get at https://openrouter.ai/keys
-- `GOOGLE_SHEET_ID`: the long string from the Sheet URL (between `/d/` and
-  `/edit`)
-- `GOOGLE_SHEET_TAB`: the worksheet name (default `M&A Comps`)
 - `OPENROUTER_MODEL`: leave as `deepseek/deepseek-chat` (cheapest), or
   override with e.g. `anthropic/claude-sonnet-4.5` for higher accuracy.
+- `OUTPUT_MODE`: `csv` (default) or `sheets`.
 
-### 3. Google Sheets service account (5 minutes)
+If `OUTPUT_MODE=sheets`, also set:
+- `GOOGLE_SHEET_ID`: the long string from the Sheet URL between `/d/` and `/edit`
+- `GOOGLE_SHEET_TAB`: the worksheet name (default `M&A Comps`)
+
+### 3. Google Sheets service account — SHEETS MODE ONLY (skip if using CSV)
 
 1. Go to https://console.cloud.google.com/iam-admin/serviceaccounts and pick
    or create a project.
@@ -80,6 +96,12 @@ SEC EDGAR ticker.
 
 First run looks back 90 days (8-K) or 180 days (10-Q). Subsequent runs
 only process filings newer than what's in `data/state.json`.
+
+**CSV mode workflow:** after each run, open `data/acquisitions.csv` and
+either copy-paste into your Sheet, or use Google Sheets' **File → Import**
+to bulk-replace the contents of a tab. The CSV is overwritten each run
+with the full current dataset (not just new rows), so a fresh import always
+reflects the latest state.
 
 ### Scheduled
 

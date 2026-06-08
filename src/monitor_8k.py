@@ -12,7 +12,7 @@ import datetime as dt
 import sys
 import traceback
 
-from . import config, sec_client, llm_parser, sheets_client, state
+from . import config, sec_client, llm_parser, state, writer as sheets_client
 
 
 def run() -> int:

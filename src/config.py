@@ -37,12 +37,19 @@ COMP_SET: list[tuple[str, str]] = [
 # --- env ---------------------------------------------------------------------
 SEC_API_KEY            = os.getenv("SEC_API_KEY", "").strip()
 OPENROUTER_API_KEY     = os.getenv("OPENROUTER_API_KEY", "").strip()
+
+# Output mode: "csv" (default, writes data/acquisitions.csv, no Google setup
+# required) or "sheets" (writes directly to a Google Sheet via service account).
+OUTPUT_MODE            = os.getenv("OUTPUT_MODE", "csv").strip()
+
+# Sheets mode only — ignored when OUTPUT_MODE=csv
 GOOGLE_SHEET_ID        = os.getenv("GOOGLE_SHEET_ID", "").strip()
 GOOGLE_SHEET_TAB       = os.getenv("GOOGLE_SHEET_TAB", "M&A Comps").strip()
 GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv(
     "GOOGLE_SERVICE_ACCOUNT_JSON",
     str(ROOT / "service_account.json"),
 ).strip()
+
 OPENROUTER_MODEL       = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat").strip()
 
 # --- sheet column layout ---------------------------------------------------

@@ -131,7 +131,12 @@ def _process_ticker(ticker: str, label: str, since_iso: str, last_acc: str | Non
 
 def run() -> int:
     s = state.load()
-    default_since = (dt.date.today() - dt.timedelta(days=90)).isoformat()
+    # Lookback window tied to MAX_ACQUISITION_AGE_DAYS so sec-api filters
+    # at the source — we never even fetch filings older than what would
+    # be kept anyway. Pad by 14 days so a deal announced just before the
+    # cutoff but with closed_date inside the window still gets caught.
+    lookback_days = (config.MAX_ACQUISITION_AGE_DAYS or 90) + 14
+    default_since = (dt.date.today() - dt.timedelta(days=lookback_days)).isoformat()
 
     ws = sheets_client.open_sheet()
     sheets_client.ensure_header(ws)

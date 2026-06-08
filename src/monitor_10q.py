@@ -110,7 +110,11 @@ def _process_ticker(ticker: str, label: str, since_iso: str, last_acc: str | Non
 
 def run() -> int:
     s = state.load()
-    default_since = (dt.date.today() - dt.timedelta(days=180)).isoformat()
+    # Lookback for 10-Q is one quarter wider than the cutoff so we catch
+    # the 10-Q that *follows* a recent quarter end (filed ~6-8 weeks after).
+    # If MAX_ACQUISITION_AGE_DAYS=180, we look back ~270 days for filings.
+    lookback_days = (config.MAX_ACQUISITION_AGE_DAYS or 180) + 90
+    default_since = (dt.date.today() - dt.timedelta(days=lookback_days)).isoformat()
 
     ws = sheets_client.open_sheet()
     sheets_client.ensure_header(ws)

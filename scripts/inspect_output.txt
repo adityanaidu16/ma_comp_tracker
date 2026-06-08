@@ -1,365 +1,537 @@
- | | | | | | | | | | | | | | |
-| Intangible Assets, Gross | | Accumulated Amortization | | Intangible Assets, Net | | Weighted-Average Remaining Useful Life (years) |
-Developed technology | $ | 82,241   | | | $ | ( 30,257 ) | | | $ | 51,984   | | | 4.5 |
-Customer relationships | 60,696   | | | ( 13,410 ) | | | 47,286   | | | 6.0 |
-Trade names and trademarks | 817   | | | ( 472 ) | | | 345   | | | 1.9 |
-Other intangibles | 1,231   | | | ( 726 ) | | | 505   | | | 5.6 |
-Total | $ | 144,985   | | | $ | ( 44,865 ) | | | $ | 100,120   | | | |
+e period of benefit. Capitalized contract acquisition costs were $ 1.5 billion as of each of April 25, 2026 and July 26, 2025, and were included in other current assets and other assets. The amortization expense associated with these costs was $ 230  million and $ 713  million for the third quarter and first nine months of fiscal 2026, respectively, and $ 272  million and $ 718  million for the corresponding periods of fiscal 2025, respectively, and was included in sales and marketing expenses.
+4. Acquisitions
+Allocation of the total purchase consideration for acquisitions we completed during the first nine months of fiscal 2026 is summarized as follows (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Purchase Consideration | | Net Tangible Assets Acquired (Liabilities Assumed) | | Purchased Intangible Assets | | Goodwill |
+Total acquisitions | $ | 49   | | | $ | —   | | | $ | 14   | | | $ | 35   | |
+The total purchase consideration related to acquisitions consisted primarily of cash consideration. Total transaction costs related to acquisition activities were $ 11 million and $ 12 million for the first nine months of fiscal 2026 and 2025, respectively. These transaction costs were expensed as incurred in general and administrative expenses (“G&A”) in the Consolidated Statements of Operations.
+The purchase price allocation for acquisitions completed during recent periods is preliminary and subject to revision as additional information about fair value of assets and liabilities becomes available. Additional information that existed as of the acquisition date but is currently unknown to us may become known during the remainder of the measurement period, a period not to exceed 12 months from the acquisition date.
 12
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Acquired intangible assets, net consisted of the following as of January 31, 2026 (dollars in thousands):
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+The goodwill generated from the acquisitions completed during the first nine months of fiscal 2026 is primarily related to expected synergies. The goodwill is generally not deductible for income tax purposes.
+The Consolidated Financial Statements include the operating results of each acquisition from the date of acquisition. Pro forma results of operations and the revenue and net income subsequent to the acquisition date for the acquisitions completed during the first nine months of fiscal 2026 have not been presented because the effects of the acquisitions were not material to our financial results.
+Compensation Expense Related to Acquisitions
+In connection with our acquisitions, we have agreed to pay certain additional amounts contingent upon the continued employment with Cisco of certain employees of the acquired entities.
+The following table summarizes the compensation expense related to acquisitions (in millions):
 | | | | | | | | | | | | | | | | | | | | | | | |
-| Intangible Assets, Gross | | Accumulated Amortization | | Intangible Assets, Net | | Weighted-Average Remaining Useful Life (years) |
-Developed technology | $ | 37,716   | | | $ | ( 28,021 ) | | | $ | 9,695   | | | 3.1 |
-Customer relationships | 20,910   | | | ( 11,546 ) | | | 9,364   | | | 2.3 |
-Trade names and trademarks | 826   | | | ( 430 ) | | | 396   | | | 2.2 |
-Other intangibles | 1,231   | | | ( 697 ) | | | 534   | | | 5.7 |
-Total | $ | 60,683   | | | $ | ( 40,694 ) | | | $ | 19,989   | | | |
-We record amortization expense associated with acquired developed technology in cost of licenses revenue and cost of subscription services revenue, trade names and trademarks in sales and marketing expense, customer relationships in sales and marketing expense, and other intangibles in general and administrative expense in the condensed consolidated statements of operations. Amortization of acquired intangible assets was $ 4.6 million and $ 1.4 million for the three months ended April 30, 2026 and 2025, respectively.
-Expected future amortization expense related to intangible assets was as follows as of April 30, 2026 (in thousands):
-| | | | | |
-| Amount |
-Remainder of year ending January 31, 2027 | $ | 17,018   | |
-Year ending January 31, | |
-2028 | 21,935   | |
-2029 | 17,352   | |
-2030 | 16,151   | |
-2031 | 14,982   | |
-Thereafter | 12,682   | |
-Total | $ | 100,120   | |
-Goodwill
-Changes in the carrying amount of goodwill during the three months ended April 30, 2026 were as follows (in thousands):
-| | | | | |
-| Carrying Amount |
-Balance as of January 31, 2026 | $ | 125,310   | |
-Acquisition of WorkFusion
-| 63,869   | |
-Measurement period adjustment — Peak | ( 2,000 ) | |
-Effect of foreign currency translation | ( 1,484 ) | |
-Balance as of April 30, 2026 | $ | 185,695   | |
-8. Operating Leases
-Our operating leases consist of real estate and vehicles and have remaining lease terms of one year to 12 years. F or purposes of calculating operating lease liabilities, lease terms are deemed to include options to extend the lease when it is reasonably certain that we will exercise those options. Our operating lease arrangements do not contain any material restrictive covenants or residual value guarantees.
+| Three Months Ended | | Nine Months Ended |
+| April 25, 2026 | | April 26, 2025 | | April 25, 2026 | | April 26, 2025 |
+Compensation expense related to acquisitions | $ | 87   | | | $ | 216   | | | $ | 295   | | | $ | 735   | |
+As of April 25, 2026, we estimated that future cash compensation expense of up to $ 282  million may be required to be recognized pursuant to applicable acquisition agreements.
+5. Goodwill and Purchased Intangible Assets
+(a) Goodwill
+The following table presents the goodwill allocated to our reportable segments as of April 25, 2026 and changes to goodwill during the first nine months of fiscal 2026 (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Balance at July 26, 2025 | | Acquisitions | | Foreign Currency Translation and Other | | Balance at April 25, 2026 |
+Americas | $ | 36,468   | | | $ | 21   | | | $ | 76   | | | $ | 36,565   | |
+EMEA | 14,397   | | | 9   | | | 28   | | | 14,434   | |
+APJC | 8,271   | | | 5   | | | 17   | | | 8,293   | |
+Total | $ | 59,136   | | | $ | 35   | | | $ | 121   | | | $ | 59,292   | |
+(b) Purchased Intangible Assets
+The following table presents details of our intangible assets acquired through acquisitions completed during the first nine months of fiscal 2026 (in millions, except years):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| FINITE LIVES | | INDEFINITE LIVES | | TOTAL |
+| CUSTOMER RELATED | | TECHNOLOGY | | TRADE NAME | | IPR&D | |
+| Weighted-
+Average Useful
+Life (in Years) | | Amount | | Weighted-
+Average Useful
+Life (in Years) | | Amount | | Weighted-
+Average Useful
+Life (in Years) | | Amount | | Amount | | Amount |
+Total | —  | | | $ | —   | | | 2.5 | | $ | 14   | | | —  | | | $ | —   | | | $ | —   | | | $ | 14   | |
+The following tables present details of our purchased intangible assets with finite lives (in millions):
+| | | | | | | | | | | | | | | | | | | | |
+April 25, 2026 | | Gross | | Accumulated Amortization | | Net |
+Customer related | | $ | 6,242   | | | $ | ( 1,826 ) | | | $ | 4,416   | |
+Technology | | 5,005   | | | ( 1,991 ) | | | 3,014   | |
+Trade name | | 510   | | | ( 90 ) | | | 420   | |
+Total | | $ | 11,757   | | | $ | ( 3,907 ) | | | $ | 7,850   | |
 13
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Lease costs are presented below (in thousands):
-| | | | | | | | | | | | | | | |
-| | | Three Months Ended April 30, |
-| | | | | 2026 | | 2025 |
-Operating lease cost | | | | | $ | 4,317   | | | $ | 3,377   | |
-Short-term lease cost | | | | | 625   | | | 660   | |
-Variable lease cost | | | | | 768   | | | 938   | |
-| | | | | | | |
-Total | | | | | $ | 5,710   | | | $ | 4,975   | |
-The following table represents the weighted-average remaining lease term and discount rate as of the periods presented:
-| | | | | | | | | | | |
-| As of |
-| April 30,
-2026 | | January 31,
-2026 |
-Weighted-average remaining lease term (years) | 9.3 | | 9.1 |
-Weighted-average discount rate | 7.0   | % | | 7.2   | % |
-Future undiscounted lease payments for our operating lease liabilities as of April 30, 2026 were as follows (in thousands):
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+| | | | | | | | | | | | | | | | | | | | |
+July 26, 2025 | | Gross | | Accumulated Amortization | | Net |
+Customer related | | $ | 6,341   | | | $ | ( 1,268 ) | | | $ | 5,073   | |
+Technology | | 5,254   | | | ( 1,606 ) | | | 3,648   | |
+Trade name | | 526   | | | ( 72 ) | | | 454   | |
+Total | | $ | 12,121   | | | $ | ( 2,946 ) | | | $ | 9,175   | |
+Purchased intangible assets include intangible assets acquired through acquisitions as well as through direct purchases or licenses.
+Impairment charges related to purchased intangible assets were $ 19  million for the first nine months of fiscal 2025. Impairment charges were as a result of declines in estimated fair value resulting from the reductions in or the elimination of expected future cash flows associated with certain technology intangible assets. The fair value for purchased intangible assets measured at fair value on a nonrecurring basis was categorized as Level 3 due to the use of significant unobservable inputs in the valuation. Significant unobservable inputs that were used included expected revenues and net income related to the assets and the expected life of the assets. The difference between the estimated fair value and the carrying value of the assets was recorded as an impairment charge, which was included in product cost of sales.
+The following table presents the amortization of purchased intangible assets, including impairment charges (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Three Months Ended | | Nine Months Ended |
+| April 25, 2026 | | April 26, 2025 | | April 25, 2026 | | April 26, 2025 |
+Amortization of purchased intangible assets: | | | | | | | |
+Cost of sales | $ | 229   | | | $ | 269   | | | $ | 704   | | | $ | 934   | |
+Operating expenses | 228   | | | 244   | | | 690   | | | 774   | |
+Total | $ | 457   | | | $ | 513   | | | $ | 1,394   | | | $ | 1,708   | |
+The estimated future amortization expense of purchased intangible assets with finite lives as of April 25, 2026 is as follows (in millions):
 | | | | | |
-| Amount |
-Remainder of year ending January 31, 2027 | $ | 12,268   | |
-Year ending January 31, | |
-2028 | 15,885   | |
-2029 | 12,643   | |
-2030 | 11,415   | |
-2031 | 10,648   | |
-Thereafter | 48,322   | |
-Total operating lease payments | 111,181   | |
-Less: imputed interest | ( 28,178 ) | |
-Total operating lease liabilities | $ | 83,003   | |
-As of April 30, 2026, we had non-cancellable commitments in the amount of $ 11.0 million related to operating leases of real estate facilities that have not yet commenced.
-Current operating lease liabilities of $ 11.0 million and $ 10.3 million were included in accrued expenses and other current liabilities on our condensed consolidated balance sheets as of April 30, 2026 and January 31, 2026, respectively.
-Supplemental cash flow information related to leases for the three months ended April 30, 2026 and 2025 was as follows (in thousands):
-| | | | | | | | | | | | | | | |
-| | | Three Months Ended April 30, |
-| | | | | 2026 | | 2025 |
-Cash paid for amounts included in the measurement of operating lease liabilities | | | | | $ | 4,428   | | | $ | 4,470   | |
-Operating lease ROU assets obtained in exchange for new operating lease liabilities | | | | | $ | 1,295   | | | $ | 755   | |
+Fiscal Year | Amount |
+2026 (remaining three months) | $ | 447   | |
+2027 | 1,495   | |
+2028 | 1,415   | |
+2029 | 1,287   | |
+2030 | 1,003   | |
+Thereafter | 2,203   | |
+Total | $ | 7,850   | |
+6. Restructuring and Other Charges
+In the fourth quarter of fiscal 2026, we announced a restructuring plan (the “Fiscal 2026 Plan”) to allow us to invest in key growth opportunities including silicon, optics, security and artificial intelligence (AI). The total pre-tax charges are estimated to be up to $ 1  billion consisting of severance and other one-time termination benefits, and other costs. We expect this plan to be substantially completed by the end of fiscal 2027.
+In the first quarter of fiscal 2025, we announced a restructuring plan (the “Fiscal 2025 Plan”), in order to allow us to invest in key growth opportunities and drive more efficiencies in our business. In connection with the Fiscal 2025 Plan, we incurred charges of $ 182  million in the first nine months of fiscal 2026. These aggregate pre-tax charges were primarily cash-based and consisted of severance and other one-time termination benefits, and other costs. In connection with the Fiscal 2025 Plan, we incurred cumulative charges of $ 926  million and substantially completed the plan in the second quarter of fiscal 2026.
 14
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-9. Condensed Consolidated Balance Sheet Components
-Prepaid Expenses and Other Current Assets
-Prepaid expenses and other current assets consisted of the following (in thousands):
-| | | | | | | | | | | |
-| As of |
-| April 30,
-2026 | | January 31,
-2026 |
-Prepaid expenses and service credits | $ | 64,297   | | | $ | 55,332   | |
-Other current assets | 48,488   | | | 50,245   | |
-Prepaid expenses and other current assets | $ | 112,785   | | | $ | 105,577   | |
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+The following table summarizes the activities related to our restructuring liability, which was included in other current liabilities on our Consolidated Balance Sheets (in millions):
+| | | | | | | | | | | | | | | | | | | | |
+| | FISCAL 2025 PLAN | | |
+| | Employee Severance | | Other | | Total |
+Liability as of July 26, 2025 | | $ | 66   | | | $ | 46   | | | $ | 112   | |
+Charges | | 142   | | | 40   | | | 182   | |
+Cash payments | | ( 169 ) | | | ( 27 ) | | | ( 196 ) | |
+Non-cash and other | | ( 1 ) | | | ( 38 ) | | | ( 39 ) | |
+Liability as of April 25, 2026 | | $ | 38   | | | $ | 21   | | | $ | 59   | |
+7. Balance Sheet and Other Details
+The following tables provide details of selected balance sheet and other items (in millions, except percentages):
+Cash, Cash Equivalents, Restricted Cash and Restricted Cash Equivalents
+| | | | | | | | | | | | | | |
+| | April 25, 2026 | | July 26, 2025 |
+Cash and cash equivalents | | $ | 7,083   | | | $ | 8,346   | |
+Restricted cash and restricted cash equivalents included in other current assets | | —   | | | 564   | |
+Total | | $ | 7,083   | | | $ | 8,910   | |
+In the table above, our restricted cash and restricted cash equivalents are funds primarily related to contractual obligations with suppliers.
+Inventories
+| | | | | | | | | | | | | | |
+| | April 25, 2026 | | July 26, 2025 |
+Raw materials | | $ | 2,546   | | | $ | 1,744   | |
+Work in process | | 826   | | | 261   | |
+Finished goods | | 1,107   | | | 933   | |
+Service-related spares | | 222   | | | 220   | |
+Demonstration systems | | 7   | | | 6   | |
+Total | | $ | 4,708   | | | $ | 3,164   | |
 Property and Equipment, Net
-Property and equipment, net consisted of the following (in thousands):
-| | | | | | | | | | | |
-| As of |
-| April 30,
-2026 | | January 31,
-2026 |
-Computers and equipment | $ | 25,472   | | | $ | 25,131   | |
-Leasehold improvements | 56,085   | | | 52,578   | |
-Furniture and fixtures | 10,126   | | | 9,266   | |
-Construction in progress | 1,909   | | | 4,103   | |
-Other | 804   | | | 823   | |
-Property and equipment, gross | 94,396   | | | 91,901   | |
-Less: accumulated depreciation | ( 48,811 ) | | | ( 45,887 ) | |
-Property and equipment, net | $ | 45,585   | | | $ | 46,014   | |
-Depreciation expense for the three months ended April 30, 2026 and 2025 was $ 2.1 million and $ 1.3 million, respectively.
-Other Assets, Non-Current
-As of April 30, 2026 and January 31, 2026, other assets, non-current included $ 27.3 million and $ 27.7 million, respectively, related to equity investments in private companies without readily determinable fair values. As a measurement alternative, these investments are reported at cost and are assessed periodically to determine whether their carrying value must be adjusted for observable changes in price or indicators of impairment.
-As of April 30, 2026 and January 31, 2026, other assets, non-current also included $ 14.1 million and $ 14.2 million , respectively, related to private-company convertible bonds, which are carried at fair value. Refer to Note 5, Fair Value Measurement for further information.
+| | | | | | | | | | | | | | |
+| | April 25, 2026 | | July 26, 2025 |
+Gross property and equipment: | | | | |
+Land, buildings, and building and leasehold improvements | | $ | 4,132   | | | $ | 4,045   | |
+Production, engineering, computer and other equipment and related software | | 5,366   | | | 5,178   | |
+Operating lease assets | | 56   | | | 51   | |
+Furniture, fixtures and other | | 304   | | | 316   | |
+Total gross property and equipment | | 9,858   | | | 9,590   | |
+Less: accumulated depreciation and amortization | | ( 7,281 ) | | | ( 7,477 ) | |
+Total | | $ | 2,577   | | | $ | 2,113   | |
 15
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Accrued Expenses and Other Current Liabilities
-Accrued expenses and other current liabilities consisted of the following (in thousands):
-| | | | | | | | | | | |
-| As of |
-| April 30,
-2026 | | January 31,
-2026 |
-Accrued expenses
-| $ | 28,820   | | | $ | 35,657   | |
-| | | |
-Accrued legal, accounting, and tax
-| 3,095   | | | 6,430   | |
-Withholding tax from employee equity transactions | 5,906   | | | 4,763   | |
-Employee stock purchase plan withholdings | 7,200   | | | 3,214   | |
-Payroll taxes and other benefits payable | 8,190   | | | 9,288   | |
-Income taxes payable | 10,632   | | | 14,784   | |
-Value-added taxes payable | 16,782   | | | 15,113   | |
-Operating lease liabilities, current | 11,012   | | | 10,306   | |
-Deferred consideration for business acquisition
-| 5,777   | | | 8,000   | |
-Contingent consideration for business acquisition
-| 33,964   | | | 1,532   | |
-Accrued partner incentives
-| 12,546   | | | 12,345   | |
-Cloud infrastructure liabilities
-| 9,527   | | | 13,183   | |
-Other | 25,241   | | | 35,881   | |
-Accrued expenses and other current liabilities | $ | 178,692   | | | $ | 170,496   | |
-10. Commitments and Contingencies
-Letters of Credit
-We had a total of $ 3.1 million and $ 3.0 million in letters of credit outstanding in favor of certain landlords for office space as of April 30, 2026 and January 31, 2026, respectively. These letters of credit renew annually and expire on various dates through fiscal year 2030.
-Indemnification
-In the ordinary course of business, we may provide indemnification of varying scope and terms to customers, vendors, directors, and officers with respect to certain matters, including, but not limited to, losses arising out of our breach of agreements, from services to be provided by us, or from intellectual property infringement claims made by third parties.
-These indemnification provisions may survive termination of the underlying agreement and the potential amount of future payments we could be required to make under these indemnification provisions may not be subject to maximum loss clauses. The maximum potential amount of future payments we could be required to make under these indemnification provisions is indeterminable. As of April 30, 2026 and January 31, 2026, we have not accrued a liability for these indemnification arrangements because the likelihood of incurring a payment obligation, if any, in connection with these indemnification arrangements was remote.
-Defined Contribution Plans
-We sponsor retirement plans for qualifying employees, including a 401(k) plan in the U.S. and defined contribution plans in certain other countries, to which we make matching contributions. Our total matching contributions to all defined contribution plans were $ 5.7 million and $ 5.5 million for the three months ended April 30, 2026 and 2025, respectively.
-Litigation
-From time to time, we may be involved in lawsuits, claims, investigations, and proceedings, consisting of intellectual property, commercial, employment, and other matters which arise in the ordinary course of business. In accordance with ASC 450, Contingencies, we make a provision for a liability when it is both probable that a liability has been incurred and the amount of the loss can be reasonably estimated.
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+Remaining Performance Obligations (RPO)
+| | | | | | | | | | | | | | |
+| | April 25, 2026 | | July 26, 2025 |
+Product | | $ | 22,058   | | | $ | 21,572   | |
+Services | | 21,404   | | | 21,961   | |
+Total | | $ | 43,462   | | | $ | 43,533   | |
+| | | | |
+Short-term RPO | | $ | 21,818   | | | $ | 21,723   | |
+Long-term RPO | | 21,644   | | | 21,810   | |
+Total | | $ | 43,462   | | | $ | 43,533   | |
+| | | | |
+Amount to be recognized as revenue over the next 12 months
+| | 50   | % | | 50   | % |
+| | | | |
+Deferred revenue | | $ | 28,599   | | | $ | 28,779   | |
+Unbilled contract revenue | | 14,863   | | | 14,754   | |
+Total | | $ | 43,462   | | | $ | 43,533   | |
+Unbilled contract revenue represents noncancelable contracts for which we have not invoiced, have an obligation to perform, and revenue has not yet been recognized in the financial statements.
+Deferred Revenue
+| | | | | | | | | | | | | | |
+| | April 25, 2026 | | July 26, 2025 |
+Product | | $ | 13,461   | | | $ | 13,490   | |
+Services | | 15,138   | | | 15,289   | |
+Total | | $ | 28,599   | | | $ | 28,779   | |
+Reported as: | | | | |
+Current | | $ | 16,446   | | | $ | 16,416   | |
+Noncurrent | | 12,153   | | | 12,363   | |
+Total | | $ | 28,599   | | | $ | 28,779   | |
+8. Leases
+(a) Lessee Arrangements
+The following table presents our operating lease balances (in millions):
+| | | | | | | | | | | | | | | | | |
+| Balance Sheet Line Item | | April 25, 2026 | | July 26, 2025 |
+Operating lease right-of-use assets | Other assets | | $ | 1,450   | | | $ | 1,301   | |
+| | | | | |
+Operating lease liabilities | Other current liabilities | | $ | 410   | | | $ | 375   | |
+Operating lease liabilities | Other long-term liabilities | | 1,288   | | | 1,175   | |
+Total operating lease liabilities | | | $ | 1,698   | | | $ | 1,550   | |
+The components of our lease expenses were as follows (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| Three Months Ended | | Nine Months Ended |
+| April 25, 2026 | | April 26, 2025 | | April 25, 2026 | | April 26, 2025 |
+Operating lease expense | $ | 134   | | | $ | 115   | | | $ | 397   | | | $ | 378   | |
+Short-term lease expense | 26   | | | 18   | | | 77   | | | 52   | |
+Variable lease expense | 80   | | | 47   | | | 229   | | | 140   | |
+Total lease expense | $ | 240   | | | $ | 180   | | | $ | 703   | | | $ | 570   | |
 16
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-UiPath and certain of its officers are currently parties to the following litigation matters:
-On September 6, 2023, a putative class action lawsuit was filed in the United States District Court for the Southern District of New York against UiPath, then Co-CEO Daniel Dines ("Mr. Dines"), and then Chief Financial Officer ("CFO") Ashim Gupta ("Mr. Gupta"), captioned In re UiPath, Inc. Securities Litigation (the "2023 Securities Action"). The complaint in this action was amended multiple times and the substance of the allegations is that, in 2021 and 2022, defendants made material misstatements and omissions, including regarding UiPath’s competitive position and its financial results, in violation of Section 11 and 15 of the Securities Act and Section 10(b), Rule 10b-5, and Section 20(a) of the Exchange Act. The lawsuit is purportedly brought on behalf of a putative class of persons who purchased or otherwise acquired UiPath common stock between April 21, 2021 and September 27, 2022, and seeks unspecified monetary damages, costs and attorneys’ fees, and other unspecified relief as the Court deems appropriate. On April 23, 2024, the defendants moved to dismiss the 2023 Securities Action, and on November 4, 2024, the Court dismissed all claims under the Securities Act, but allowed the case to proceed with respect to two statements relating to competition that the plaintiffs allege violated the Exchange Act. On June 9, 2025, the plaintiff filed a third amended complaint to include two additional statements made by the defendants during the same 2021 and 2022 period, which plaintiff alleges were materially misleading. On June 26, 2025, the defendants moved to dismiss the third amended complaint in its entirety, and on October 2, 2025, the Court granted the defendants' motion to dismiss. On February 9, 2026, the plaintiff filed an appeal with the United States Court of Appeals for the Second Circuit with respect to the dismissal.
-Starting on November 30, 2023, five purported shareholder derivative lawsuits were filed in various courts against UiPath, as a nominal defendant, Mr. Dines, Mr. Gupta, and several of UiPath’s current and former directors, alleging that the individual defendants breached their fiduciary duties and committed other alleged misconduct in connection with the statements at issue in the 2023 Securities Action and by causing UiPath to repurchase shares at allegedly inflated prices. As of February 5, 2025, all of these derivative lawsuits were voluntarily dismissed without prejudice. On July 18, 2025, a new shareholder derivative lawsuit was filed in the District of Delaware against the same defendants alleging substantially similar claims. This case is captioned Rudolph v. Dines et al. ("Rudolph"). On November 19, 2025, the defendants moved to dismiss the Rudolph case in its entirety. In response, on or about January 20, 2026, plaintiff filed an amended complaint, and on February 19, 2026, defendants again moved to dismiss the amended complaint in its entirety.
-On June 20, 2024, a putative class action lawsuit was commenced in the United States District Court for the Southern District of New York against UiPath and select executives asserting claims under Sections 10(b) and 20(a) of the Exchange Act on behalf of a putative class of persons who purchased or acquired UiPath common stock, and purchasers of UiPath call options and sellers of put options, between December 1, 2023 and May 29, 2024 (the "2024 Securities Action"). Plaintiffs alleged that the defendants made material misstatements and omissions, including regarding UiPath's AI-powered Business Automation Platform and UiPath's strategy for, the success of, and customer demand for the platform, and sought unspecified monetary damages, costs and attorneys' fees, and other unspecified relief. On January 21, 2025, the defendants moved to dismiss the amended complaint and on July 23, 2025, the Court granted the motion and dismissed the amended complaint in its entirety. On September 12, 2025, the plaintiffs filed a second amended complaint alleging that former CEO Robert Enslin and Mr. Gupta made material misstatements and omissions during the earnings calls and in company disclosures during a class period of December 1, 2023 to May 29, 2024, in violation of Section 10(b) and 20(a) of the Exchange Act and Rule 10b-5 promulgated thereunder. On October 27, 2025, defendants moved to dismiss the second amended complaint in its entirety.
-The two purported shareholder derivative lawsuits related to the 2024 Securities Action, filed in the United States District Court for the Southern District of New York on July 8, 2024 and April 27, 2025, respectively, are stayed pending further resolution of the 2024 Securities Action.
-We have not recorded any accrual related to the aforementioned litigation matters as of April 30, 2026, as we believe a loss in these matters is neither probable nor estimable at this time.
-Warranty
-We warrant to customers that our platform will operate substantially in accordance with its specifications. Historically, no significant costs have been incurred related to product warranties. Based on such historical
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+Supplemental information related to our operating leases is as follows (in millions):
+| | | | | | | | | | | |
+| Nine Months Ended |
+| April 25, 2026 | | April 26, 2025 |
+Cash paid for amounts included in the measurement of lease liabilities —
+operating cash flows | $ | 392   | | | $ | 345   | |
+Right-of-use assets obtained in exchange for operating leases liabilities | $ | 510   | | | $ | 483   | |
+The weighted-average lease term was 5.8 years and 5.7 years as of April 25, 2026 and July 26, 2025, respectively. The weighted-average discount rate was 4.0 % and 4.1 % as of April 25, 2026 and July 26, 2025, respectively.
+The maturities of our operating leases (undiscounted) as of April 25, 2026 are as follows (in millions):
+| | | | | |
+Fiscal Year | Amount |
+2026 (remaining three months) | $ | 146   | |
+2027 | 426   | |
+2028 | 315   | |
+2029 | 251   | |
+2030 | 212   | |
+Thereafter | 583   | |
+Total lease payments | 1,933   | |
+Less: interest | ( 235 ) | |
+Total | $ | 1,698   | |
+(b) Lessor Arrangements
+Our leases primarily represent sales-type leases with terms of four years on average. We provide leasing of our equipment and complementary third-party products primarily through our channel partners and distributors, for which the income arising from these leases is recognized through interest income. Interest income was $ 13  million and $ 44  million for the third quarter and first nine months of fiscal 2026, respectively, and $ 16  million and $ 49  million for the corresponding periods of fiscal 2025, respectively, and was included in interest income in the Consolidated Statement of Operations. The net investment of our lease receivables is measured at the commencement date as the gross lease receivable, residual value less unearned income and allowance for credit loss. For additional information, see Note 9.
+Future minimum lease payments on our lease receivables as of April 25, 2026 are summarized as follows (in millions):
+| | | | | |
+Fiscal Year | Amount |
+2026 (remaining three months) | $ | 105   | |
+2027 | 397   | |
+2028 | 114   | |
+2029 | 143   | |
+2030 | 140   | |
+Total | 899   | |
+Less: Present value of lease payments | ( 814 ) | |
+Unearned income | $ | 85   | |
+Actual cash collections may differ from the contractual maturities due to early customer buyouts, refinancings, or defaults.
+9. Financing Receivables
+(a) Financing Receivables
+Financing receivables primarily consist of loan receivables and lease receivables. Loan receivables represent financing arrangements related to the sale of our hardware, software, and services (including technical support and advanced services), and also may include additional funding for other costs associated with network installation and integration of our products and services. Loan receivables have terms of one year to three years on average. Lease receivables represent sales-type leases resulting from the sale of Cisco’s and complementary third-party products and are typically collateralized by a security interest in the underlying assets. Lease receivables consist of arrangements with terms of four years on average.
 17
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-experience, the probability of incurring such costs in the future is deemed remote. As such, no accruals for product warranty costs have been made.
-Other Matters
-Our indirect tax positions are subject to audit in multiple jurisdictions globally.
-Notably, our Romania subsidiary was subjected to audits by the Agenția Națională de Administrare Fiscală for value-added tax and corporate income tax for the periods from January 2020 through January 2022 and January 2018 through January 2022, respectively, which were completed during the first quarter of fiscal year 2025. With regard to the value-added tax audit, an assessment of $ 14.3  million has been issued. While we paid this assessment during fiscal year 2025, we disagree with the assessment and are in the process of appealing through litigation. The amount of the payment is included in other assets, non-current on our condensed consolidated balance sheets as of April 30, 2026 and January 31, 2026. We have not recorded any estimated liability related to this litigation as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
-Additionally, our Romania subsidiary is currently subject to value-added tax audit for the period from February 2022 through February 2024. The audit is suspended until the appeal of the aforementioned prior period assessment is resolved in court. While the audit is ongoing and no official assessment has been issued, we estimate a possible loss of approximately $ 13.0  million. We have not recorded any estimated liability related to this audit as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
-Our India subsidiary is currently subject to goods and services tax ("GST") inspection for the period from April 2021 through March 2024. An inquiry for certain transactions with a GST amount of $ 46.8  million has been raised. We have responded to all requests from the tax authority. The inspection for the period from April 2018 through March 2021 has been dropped as the statute of limitation has lapsed. We have no t recorded any estimated tax liability related to this audit as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
-Additionally, during the three months ended April 30, 2026, our India subsidiary entered into an advance pricing agreement with the Indian taxing authorities for the period from April 2018 through March 2027. Based on our preliminary computation, we have recorded an expected payable amount of $ 4.4  million within accrued expenses and other current liabilities on our condensed consolidated balance sheet as of April 30, 2026.
-Further, we are currently subject to various other audits, including sales and use tax audit of our U.S. entity in New York State for the periods from March 2019 through February 2022 and December 2022 through May 2025, and VAT audits in various foreign jurisdictions. We have not recorded any estimated tax liabilities related to these audits as of April 30, 2026, as we believe it is not probable that a material loss has been incurred.
-For additional information regarding corporate income tax audits, refer to Note 13, Income Taxes .
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+A summary of our financing receivables is presented as follows (in millions):
+| | | | | | | | | | | | | | | | | |
+April 25, 2026 | Loan Receivables | | Lease Receivables | | Total |
+Gross | $ | 5,744   | | | $ | 899   | | | $ | 6,643   | |
+Residual value | —   | | | 67   | | | 67   | |
+Unearned income | —   | | | ( 85 ) | | | ( 85 ) | |
+Allowance for credit loss | ( 36 ) | | | ( 11 ) | | | ( 47 ) | |
+Total, net | $ | 5,708   | | | $ | 870   | | | $ | 6,578   | |
+Reported as: | | | | | |
+Current | $ | 2,584   | | | $ | 352   | | | $ | 2,936   | |
+Noncurrent | 3,124   | | | 518   | | | 3,642   | |
+Total, net | $ | 5,708   | | | $ | 870   | | | $ | 6,578   | |
+| | | | | | | | | | | | | | | | | |
+July 26, 2025 | Loan Receivables | | Lease Receivables | | Total |
+Gross | $ | 5,628   | | | $ | 982   | | | $ | 6,610   | |
+Residual value | —   | | | 66   | | | 66   | |
+Unearned income | —   | | | ( 99 ) | | | ( 99 ) | |
+Allowance for credit loss | ( 37 ) | | | ( 13 ) | | | ( 50 ) | |
+Total, net | $ | 5,591   | | | $ | 936   | | | $ | 6,527   | |
+Reported as: | | | | | |
+Current | $ | 2,715   | | | $ | 346   | | | $ | 3,061   | |
+Noncurrent | 2,876   | | | 590   | | | 3,466   | |
+Total, net | $ | 5,591   | | | $ | 936   | | | $ | 6,527   | |
+(b) Credit Quality of Financing Receivables
+The tables below present our gross financing receivables, excluding residual value, less unearned income, categorized by our internal credit risk rating by period of origination (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+April 25, 2026 | | | Fiscal Year | | Nine Months Ended | | |
+Internal Credit Risk Rating | Prior | | July 30, 2022 | | July 29, 2023 | | July 27, 2024 | | July 26, 2025 | | April 25, 2026 | | Total |
+Loan Receivables: | | | | | | | | | | | | | |
+1 to 4 | $ | 7   | | | $ | 41   | | | $ | 147   | | | $ | 690   | | | $ | 1,136   | | | $ | 1,534   | | | $ | 3,555   | |
+5 to 6 | 15   | | | 12   | | | 83   | | | 231   | | | 772   | | | 1,040   | | | 2,153   | |
+7 and Higher | —   | | | 2   | | | 3   | | | 11   | | | 17   | | | 3   | | | 36   | |
+Total Loan Receivables | $ | 22   | | | $ | 55   | | | $ | 233   | | | $ | 932   | | | $ | 1,925   | | | $ | 2,577   | | | $ | 5,744   | |
+Lease Receivables: | | | | | | | | | | | | | |
+1 to 4 | $ | —   | | | $ | 5   | | | $ | 37   | | | $ | 75   | | | $ | 92   | | | $ | 53   | | | $ | 262   | |
+5 to 6 | 1   | | | 18   | | | 83   | | | 144   | | | 141   | | | 156   | | | 543   | |
+7 and Higher | —   | | | 1   | | | 1   | | | 4   | | | 1   | | | 2   | | | 9   | |
+Total Lease Receivables | $ | 1   | | | $ | 24   | | | $ | 121   | | | $ | 223   | | | $ | 234   | | | $ | 211   | | | $ | 814   | |
+Total | $ | 23   | | | $ | 79   | | | $ | 354   | | | $ | 1,155   | | | $ | 2,159   | | | $ | 2,788   | | | $ | 6,558   | |
 18
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Non-Cancelable Purchase Obligations
-In the normal course of business, we enter into non-cancelable purchase commitments with various parties, mainly for hosting services, software products and services, and purchase of credits toward products and services from strategic alliance partners.
-As of April 30, 2026, we had outstanding non-cancelable purchase obligations with a term of 12 months or longer as follows (in thousands):
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+July 26, 2025 | | | Fiscal Year | | |
+Internal Credit Risk Rating | Prior | | July 31, 2021 | | July 30, 2022 | | July 29, 2023 | | July 27, 2024 | | July 26, 2025 | | Total |
+Loan Receivables: | | | | | | | | | | | | | |
+1 to 4 | $ | 2   | | | $ | 83   | | | $ | 236   | | | $ | 371   | | | $ | 1,258   | | | $ | 1,556   | | | $ | 3,506   | |
+5 to 6 | 2   | | | 56   | | | 53   | | | 167   | | | 561   | | | 1,248   | | | 2,087   | |
+7 and Higher | —   | | | —   | | | 6   | | | 9   | | | 4   | | | 16   | | | 35   | |
+Total Loan Receivables | $ | 4   | | | $ | 139   | | | $ | 295   | | | $ | 547   | | | $ | 1,823   | | | $ | 2,820   | | | $ | 5,628   | |
+Lease Receivables: | | | | | | | | | | | | | |
+1 to 4 | $ | —   | | | $ | 9   | | | $ | 23   | | | $ | 112   | | | $ | 187   | | | $ | 207   | | | $ | 538   | |
+5 to 6 | —   | | | 6   | | | 25   | | | 77   | | | 120   | | | 103   | | | 331   | |
+7 and Higher | —   | | | —   | | | 1   | | | 3   | | | 8   | | | 2   | | | 14   | |
+Total Lease Receivables | $ | —   | | | $ | 15   | | | $ | 49   | | | $ | 192   | | | $ | 315   | | | $ | 312   | | | $ | 883   | |
+Total | $ | 4   | | | $ | 154   | | | $ | 344   | | | $ | 739   | | | $ | 2,138   | | | $ | 3,132   | | | $ | 6,511   | |
+The following tables present the aging analysis of gross receivables as of April 25, 2026 and July 26, 2025 (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| DAYS PAST DUE
+(INCLUDES BILLED AND UNBILLED) | | | | | | | | | | |
+April 25, 2026 | 31-60 | | 61-90  | | 91+ | | Total
+Past Due | | Current | | Total | | 120+ Still Accruing | | Nonaccrual
+Financing
+Receivables | | Impaired
+Financing
+Receivables |
+Loan receivables | $ | 42   | | | $ | 18   | | | $ | 12   | | | $ | 72   | | | $ | 5,672   | | | $ | 5,744   | | | $ | 5   | | | $ | 1   | | | $ | 1   | |
+Lease receivables | 5   | | | 6   | | | 7   | | | 18   | | | 796   | | | 814   | | | 3   | | | 1   | | | 1   | |
+Total | $ | 47   | | | $ | 24   | | | $ | 19   | | | $ | 90   | | | $ | 6,468   | | | $ | 6,558   | | | $ | 8   | | | $ | 2   | | | $ | 2   | |
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| DAYS PAST DUE
+(INCLUDES BILLED AND UNBILLED) | | | | | | | | | | |
+July 26, 2025 | 31-60 | | 61-90  | | 91+ | | Total
+Past Due | | Current | | Total | | 120+ Still Accruing | | Nonaccrual
+Financing
+Receivables | | Impaired
+Financing
+Receivables |
+Loan receivables | $ | 18   | | | $ | 18   | | | $ | 16   | | | $ | 52   | | | $ | 5,576   | | | $ | 5,628   | | | $ | 4   | | | $ | 5   | | | $ | 5   | |
+Lease receivables | 7   | | | 3   | | | 6   | | | 16   | | | 867   | | | 883   | | | 4   | | | 1   | | | 1   | |
+Total | $ | 25   | | | $ | 21   | | | $ | 22   | | | $ | 68   | | | $ | 6,443   | | | $ | 6,511   | | | $ | 8   | | | $ | 6   | | | $ | 6   | |
+Past due financing receivables are those that are 31 days or more past due according to their contractual payment terms. The data in the preceding tables is presented by contract, and the aging classification of each contract is based on the oldest outstanding receivable, and therefore past due amounts also include unbilled and current receivables within the same contract.
+(c) Allowance for Credit Loss Rollforward
+The allowances for credit loss and the related financing receivables are summarized as follows (in millions):
+| | | | | | | | | | | | | | | | | |
+Three Months Ended April 25, 2026 | CREDIT LOSS ALLOWANCES |
+| Loan Receivables | | Lease Receivables | | Total |
+Allowance for credit loss as of January 24, 2026 | $ | 34   | | | $ | 11   | | | $ | 45   | |
+Provisions (benefits) | 2   | | | ( 1 ) | | | 1   | |
+Foreign exchange and other | —   | | | 1   | | | 1   | |
+Allowance for credit loss as of April 25, 2026 | $ | 36   | | | $ | 11   | | | $ | 47   | |
+| | | | | | | | | | | | | | | | | |
+Three Months Ended April 26, 2025 | CREDIT LOSS ALLOWANCES |
+| Loan Receivables | | Lease Receivables | | Total |
+Allowance for credit loss as of January 25, 2025 | $ | 45   | | | $ | 14   | | | $ | 59   | |
+Provisions (benefits) | ( 2 ) | | | ( 1 ) | | | ( 3 ) | |
 | | | | | |
-| Amount |
-Remainder of year ending January 31, 2027 | $ | 120,984   | |
-Year ending January 31, | |
-2028 | 126,238   | |
-2029 | 55,411   | |
-2030 | 69   | |
-2031 | 25   | |
-Thereafter | 17   | |
-Total | $ | 302,744   | |
-11.  Stockholders’ Equity
-Stock Repurchases
-On September 1, 2023, our board of directors approved a stock repurchase program which authorized the repurchase from time to time of up to $ 500.0  million of our outstanding shares of Class A common stock. This authorization was originally scheduled to expire on March 1, 2025. On August 30, 2024, our board of directors authorized the repurchase of an additional $ 500.0 million of our Class A common stock. These authorizations were fulfilled during the three months ended April 30, 2026, and in March 2026 , our board of directors authorized the repurchase of an additional $ 500.0 million of our Class A common stock. The current authorization may be suspended or discontinued at any time and does not have a specified expiration date. Repurchases under the program may be effected through open market purchases, privately-negotiated transactions, or otherwise in accordance with applicable federal securities laws, including through Rule 10b5-1 trading plans and under Rule 10b-18 of the Exchange Act. The timing and actual number of shares repurchased will depend on a variety of factors, including price, general business and market conditions, and alternate uses of capital.
-We repurchased 20.4 million and 21.9 million shares of our Class A common stock at an average price of $ 11.47 and $ 10.40 per share (inclusive of brokerage commission) during the three months ended April 30, 2026 and 2025, respectively.
-For the three months ended April 30, 2026 and 2025, we accrued $ 1.9  million of related excise tax pursuant to the Inflation Reduction Act of 2022, which is included in the cost of treasury stock on our condensed consolidated balance sheets.
-Subsequent to April 30, 2026, between May 1, 2026 and May 15, 2026, we repurchased an additional 2.4 million shares of our Class A common stock at an average price of $ 9.63 per share.
-Charitable Donations of Class A Common Stock
-We have reserved 2.8  million shares of our Class A common stock to fund our social impact and environmental, social, and governance initiatives. We contributed 0.3 million shares of our Class A common stock during each of the three-month periods ended April 30, 2026 and 2025 to a donor-advised fund in connection with our Pledge 1% commitment. The aggregate fair values of the shares on the respective contribution dates of $ 3.0 million and $ 4.2 million were recorded within general and administrative expense in the condensed consolidated statements of operations for the three months ended April 30, 2026 and 2025, respectively.
+Foreign exchange and other | 1   | | | 1   | | | 2   | |
+Allowance for credit loss as of April 26, 2025 | $ | 44   | | | $ | 14   | | | $ | 58   | |
 19
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Accumulated Other Comprehensive Income
-For the three months ended April 30, 2026 and 2025, changes in the components of accumulated other comprehensive income (loss) were as follows (in thousands):
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
 | | | | | | | | | | | | | | | | | |
-| Foreign Currency Translation Adjustments | | Unrealized Gain (Loss) on Marketable Securities | | Accumulated Other Comprehensive Income |
-Balance as of January 31, 2026 | $ | 36,256   | | | $ | 345   | | | $ | 36,601   | |
-Other comprehensive loss, net of tax | ( 8,104 ) | | | ( 1,123 ) | | | ( 9,227 ) | |
-| | | | | |
-Balance as of April 30, 2026 | $ | 28,152   | | | $ | ( 778 ) | | | $ | 27,374   | |
+Nine Months Ended April 25, 2026 | CREDIT LOSS ALLOWANCES |
+| Loan Receivables | | Lease Receivables | | Total |
+Allowance for credit loss as of July 26, 2025 | $ | 37   | | | $ | 13   | | | $ | 50   | |
+Provisions (benefits) | ( 1 ) | | | ( 3 ) | | | ( 4 ) | |
+Foreign exchange and other | —   | | | 1   | | | 1   | |
+Allowance for credit loss as of April 25, 2026 | $ | 36   | | | $ | 11   | | | $ | 47   | |
 | | | | | | | | | | | | | | | | | |
-| Foreign Currency Translation Adjustments | | Unrealized Gain (Loss) on Marketable Securities | | Accumulated Other Comprehensive (Loss) Income |
-Balance as of January 31, 2025 | $ | ( 4,518 ) | | | $ | ( 372 ) | | | $ | ( 4,890 ) | |
-Other comprehensive income, net of tax | 33,857   | | | 556   | | | 34,413   | |
-| | | | | |
-Balance as of April 30, 2025 | $ | 29,339   | | | $ | 184   | | | $ | 29,523   | |
-12.  Equity Incentive Plans and Stock-Based Compensation
-2021 Stock Plan
-In April 2021, prior to and in connection with our initial public offering ("IPO"), we adopted our 2021 Equity Incentive Plan (the "2021 Plan"), which provides for grants of incentive stock options, nonstatutory stock options, stock appreciation rights, restricted stock awards ("RSAs"), restricted stock units ("RSUs"), performance stock units ("PSUs"), and other forms of awards. As of April 30, 2026, we have reserved 256.7 million shares of our Class A common stock to be issued under the 2021 Plan. The number of shares of our Class A common stock reserved for issuance under the 2021 Plan will automatically increase on February 1 of each year for a period of ten years , which began on February 1, 2022 and continues through February 1, 2031, in an amount equal to (1) 5 % of the total number of shares of our common stock (both Class A and Class B) outstanding on the preceding January 31, or (2) a lesser number of shares determined by our board of directors no later than the February 1 increase.
-2021 Employee Stock Purchase Plan
-In April 2021, prior to and in connection with the IPO, we adopted our 2021 Employee Stock Purchase Plan (the “ESPP”). As of April 30, 2026, the ESPP authorizes the issuance of 38.1 million shares of our Class A common stock under purchase rights granted to our employees. The number of shares of our Class A common stock reserved for issuance will automatically increase on February 1 of each year for a period of ten years , which began on February 1, 2022 and continues through February 1, 2031, by the lesser of (1) 1 % of the total number of shares of our common stock (both Class A and Class B) outstanding on the preceding January 31; and (2) 15.5 million shares, except that before the date of any such increase, our board of directors may determine that such increase will be less than the amount set forth by (1) and (2) above. The ESPP allows participants to purchase shares at the lesser of (a) 85 % of the fair market value of our Class A common stock as of the commencement of the offering period, and (b) 85 % of the fair market value of our Class A common stock on the corresponding purchase date.
+Nine Months Ended April 26, 2025 | CREDIT LOSS ALLOWANCES |
+| Loan Receivables | | Lease Receivables | | Total |
+Allowance for credit loss as of July 27, 2024 | $ | 50   | | | $ | 15   | | | $ | 65   | |
+Provisions (benefits) | ( 5 ) | | | ( 3 ) | | | ( 8 ) | |
+Recoveries (write-offs), net | ( 3 ) | | | —   | | | ( 3 ) | |
+Foreign exchange and other | 2   | | | 2   | | | 4   | |
+Allowance for credit loss as of April 26, 2025 | $ | 44   | | | $ | 14   | | | $ | 58   | |
+10. Investments
+(a) Summary of Available-for-Sale Debt Investments
+The following tables summarize our available-for-sale debt investments (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | |
+April 25, 2026 | Amortized
+Cost | | Gross
+Unrealized
+Gains | | Gross
+Unrealized and Credit Losses | | Fair
+Value |
+U.S. government securities | $ | 1,716   | | | $ | 2   | | | $ | ( 6 ) | | | $ | 1,712   | |
+U.S. government agency securities | 41   | | | —   | | | —   | | | 41   | |
+Non-U.S. government and agency securities | 400   | | | —   | | | —   | | | 400   | |
+Corporate debt securities | 2,791   | | | 4   | | | ( 37 ) | | | 2,758   | |
+Mortgage- and asset-backed securities | 211   | | | —   | | | ( 8 ) | | | 203   | |
+Commercial paper | 2,731   | | | —   | | | —   | | | 2,731   | |
+Certificates of deposit | 1,335   | | | —   | | | —   | | | 1,335   | |
+Total | $ | 9,225   | | | $ | 6   | | | $ | ( 51 ) | | | $ | 9,180   | |
+| | | | | | | | | | | | | | | | | | | | | | | |
+July 26, 2025 | Amortized
+Cost | | Gross
+Unrealized
+Gains | | Gross
+Unrealized and Credit Losses | | Fair
+Value |
+U.S. government securities | $ | 1,971   | | | $ | 2   | | | $ | ( 12 ) | | | $ | 1,961   | |
+U.S. government agency securities | 67   | | | —   | | | —   | | | 67   | |
+Non-U.S. government and agency securities | 458   | | | —   | | | —   | | | 458   | |
+Corporate debt securities | 3,138   | | | 13   | | | ( 61 ) | | | 3,090   | |
+Mortgage- and asset-backed securities | 320   | | | —   | | | ( 34 ) | | | 286   | |
+Commercial paper | 950   | | | —   | | | —   | | | 950   | |
+Certificates of deposit | 569   | | | —   | | | —   | | | 569   | |
+Total | $ | 7,473   | | | $ | 15   | | | $ | ( 107 ) | | | $ | 7,381   | |
 20
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Stock Options
-Stock option activity during the three months ended April 30, 2026 was as follows:
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+The following table presents the gross realized gains and gross realized losses related to available-for-sale debt investments (in millions):
 | | | | | | | | | | | | | | | | | | | | | | | |
-| Stock Options
-(in thousands) | | Weighted-Average Exercise Price | | Weighted-Average Remaining Contractual Life (years) | | Aggregate Intrinsic Value
-(in thousands) |
-Outstanding as of January 31, 2026 | 6,790   | | | $ | 0.57   | | | 7.5 | | $ | 81,589   | |
-Granted | 1,774   | | | $ | 0.10   | | | | | |
-Exercised | ( 1,254 ) | | | $ | 0.28   | | | | | |
-Forfeited | ( 93 ) | | | $ | 0.14   | | | | | |
-Outstanding as of April 30, 2026 | 7,217   | | | $ | 0.51   | | | 8.0 | | $ | 70,625   | |
-| | | | | | | |
-Vested and exercisable as of April 30, 2026 | 2,339   | | | $ | 1.38   | | | 5.7 | | $ | 20,866   | |
-The weighted-average grant date fair value of stock options granted during the three months ended April 30, 2026 was $ 12.16 per share. The intrinsic value of stock options exercised during the three months ended April 30, 2026 was $ 13.9 million.
-Unrecognized compensation expense associated with unvested stock options granted and outstanding as of April 30, 2026 was approximately $ 59.8 million, which is expected to be recognized over a weighted-average remaining period of 2.3 years.
-Restricted Stock Units
-RSU activity during the three months ended April 30, 2026 was as follows:
+| Three Months Ended | | Nine Months Ended |
+| April 25, 2026 | | April 26, 2025 | | April 25, 2026 | | April 26, 2025 |
+Gross realized gains | $ | 3   | | | $ | 1   | | | $ | 14   | | | $ | 9   | |
+Gross realized losses | ( 3 ) | | | ( 31 ) | | | ( 22 ) | | | ( 84 ) | |
+Total | $ | —   | | | $ | ( 30 ) | | | $ | ( 8 ) | | | $ | ( 75 ) | |
+The following tables present the breakdown of the available-for-sale debt investments with gross unrealized losses and the duration that those losses had been unrealized at April 25, 2026 and July 26, 2025 (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| UNREALIZED LOSSES
+LESS THAN 12 MONTHS | | UNREALIZED LOSSES
+12 MONTHS OR GREATER | | TOTAL |
+April 25, 2026 | Fair Value | | Gross
+Unrealized
+Losses | | Fair Value | | Gross
+Unrealized
+Losses | | Fair Value | | Gross
+Unrealized
+Losses |
+U.S. government securities | $ | 1,004   | | | $ | ( 5 ) | | | $ | 185   | | | $ | ( 1 ) | | | $ | 1,189   | | | $ | ( 6 ) | |
+U.S. government agency securities | 7   | | | —   | | | —   | | | —   | | | 7   | | | —   | |
+Non-U.S. government and agency securities | 263   | | | —   | | | —   | | | —   | | | 263   | | | —   | |
+Corporate debt securities | 1,073   | | | ( 6 ) | | | 926   | | | ( 5 ) | | | 1,999   | | | ( 11 ) | |
+Mortgage- and asset-backed securities | 86   | | | —   | | | 73   | | | ( 8 ) | | | 159   | | | ( 8 ) | |
+Commercial paper | 74   | | | —   | | | —   | | | —   | | | 74   | | | —   | |
+Total | $ | 2,507   | | | $ | ( 11 ) | | | $ | 1,184   | | | $ | ( 14 ) | | | $ | 3,691   | | | $ | ( 25 ) | |
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| UNREALIZED LOSSES
+LESS THAN 12 MONTHS | | UNREALIZED LOSSES
+12 MONTHS OR GREATER | | TOTAL |
+July 26, 2025 | Fair Value | | Gross
+Unrealized
+Losses | | Fair Value | | Gross
+Unrealized
+Losses | | Fair Value | | Gross
+Unrealized
+Losses |
+U.S. government securities | $ | 1,076   | | | $ | ( 6 ) | | | $ | 302   | | | $ | ( 6 ) | | | $ | 1,378   | | | $ | ( 12 ) | |
+U.S. government agency securities | 8   | | | —   | | | 21   | | | —   | | | 29   | | | —   | |
+Non-U.S. government and agency securities | 292   | | | —   | | | —   | | | —   | | | 292   | | | —   | |
+Corporate debt securities | 106   | | | —   | | | 1,800   | | | ( 35 ) | | | 1,906   | | | ( 35 ) | |
+Mortgage- and asset-backed securities | 5   | | | —   | | | 279   | | | ( 34 ) | | | 284   | | | ( 34 ) | |
+Commercial paper | 30   | | | —   | | | —   | | | —   | | | 30   | | | —   | |
+Total | $ | 1,517   | | | $ | ( 6 ) | | | $ | 2,402   | | | $ | ( 75 ) | | | $ | 3,919   | | | $ | ( 81 ) | |
+The following table summarizes the maturities of our available-for-sale debt investments as of April 25, 2026 (in millions):
 | | | | | | | | | | | |
-| RSUs
-(in thousands) | | Weighted-Average Grant Date Fair Value Per Share |
-Unvested as of January 31, 2026 | 19,898   | | | $ | 13.56   | |
-Granted | 8,695   | | | $ | 12.00   | |
-Vested | ( 3,277 ) | | | $ | 14.35   | |
-Forfeited | ( 1,753 ) | | | $ | 14.04   | |
-Unvested as of April 30, 2026 | 23,563   | | | $ | 12.84   | |
-The intrinsic value of RSUs released during the three months ended April 30, 2026 was $ 36.4 million.
-As of April 30, 2026, total unrecognized compensation expense related to unvested RSUs was approximately $ 283.8 million, which is expected to be recognized over a weighted-average remaining period of 2.4 years.
-Performance Stock Units
-During the three months ended April 30, 2026, we granted 0.8 million PSUs with a weighted-average grant date fair value of $ 11.02 per share. These PSUs are subject to performance conditions related to the achievement of certain Company targets for fiscal year 2027, with a potential payout ranging from 0 % to 150 % of the base number of PSUs awarded. To the extent that they are earned, these PSUs will vest over three years from the grant date.
-The intrinsic value of 0.2 million PSUs released during the three months ended April 30, 2026 was $ 2.6 million.
-As of April 30, 2026, total unrecognized compensation expense related to 1.3 million unvested PSUs expected to vest was approximately $ 14.2 million, which is expected to be recognized over a weighted-average remaining period of 2.6 years.
+| Amortized Cost | | Fair Value |
+Within 1 year | $ | 5,919   | | | $ | 5,888   | |
+After 1 year through 5 years | 3,015   | | | 3,010   | |
+After 5 years through 10 years | 80   | | | 79   | |
+Mortgage- and asset-backed securities with no single maturity | 211   | | | 203   | |
+Total | $ | 9,225   | | | $ | 9,180   | |
+Actual maturities may differ from the contractual maturities because borrowers may have the right to call or prepay certain obligations.
 21
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-Employee Stock Purchase Plan Awards
-As of April 30, 2026, total unrecognized compensation expense related to the ESPP was approximately $ 0.8  million, which is expected to be recognized over a weighted-average remaining period of 0.1 years.
-Stock-Based Compensation Expense
-Stock-based compensation expense is classified in the condensed consolidated statements of operations as follows (in thousands):
-| | | | | | | | | | | | | | | |
-| | | Three Months Ended April 30, |
-| | | | | 2026 | | 2025 |
-Cost of subscription services revenue | | | | | $ | 2,268   | | | $ | 3,874   | |
-Cost of professional services and other revenue | | | | | 1,783   | | | 2,728   | |
-Sales and marketing | | | | | 16,782   | | | 23,586   | |
-Research and development | | | | | 24,741   | | | 34,595   | |
-General and administrative | | | | | 7,736   | | | 11,578   | |
-Total | | | | | $ | 53,310   | | | $ | 76,361   | |
-13. Income Taxes
-Our tax provision for interim periods is determined using an estimated annual effective tax rate, adjusted for discrete items arising in the applicable quarter. Each quarter, we update the estimated annual effective tax rate and make a year-to-date adjustment to the provision. The estimated annual effective tax rate may change due to several factors, including the relative amount of income we earn in various jurisdictions and certain book-tax differences.
-For the three months ended April 30, 2026 and 2025, we had a provision for income taxes of $ 18.4 million and $ 2.8 million, respectively, reflecting an effective tax rate of 45.0 % and ( 14.3 )%, respectively.
-For the three months ended April 30, 2026, our effective tax rate differed from the U.S. federal statutory rate primarily as a result of U.S. tax on foreign earnings and tax rate differences between the U.S. and foreign countries.
-For the three months ended April 30, 2025, our effective tax rate differed from the U.S. federal statutory rate primarily as a result of not recognizing deferred tax expense due to a full valuation allowance on U.S. and Romania deferred tax assets ("DTAs") and due to tax rate differences between the U.S. and foreign countries.
-The realization of tax benefits of net DTAs is dependent upon future levels of taxable income of an appropriate character in the periods in which the items are expected to be deductible or taxable. As of April 30, 2026, based on the available positive and negative evidence, including the amount of taxable income in the U.S. in recent years and our expectation of future profits in the U.S., we believe it is more likely than not that certain of our U.S. state DTAs and our Romania DTAs will not be realized. Therefore, we continue to maintain a full valuation allowance against such DTAs. We intend to maintain each of these full valuation allowances until sufficient positive evidence exists to support a reversal of, or decrease in, each of the respective valuation allowances. Given our current earnings and anticipated future earnings, we believe that there is a reasonable possibility that sufficient positive evidence may become available to allow us to conclude that a valuation allowance is no longer needed for these U.S. state DTAs during fiscal year 2027, and for these Romania DTAs, or a portion thereof, during fiscal year 2028, which would result in income tax benefit in the period of the respective release.
-As of April 30, 2026, we had a reserve for gross unrecognized tax benefits totaling $ 27.1 million related to income taxes, which would impact the effective tax rate if recognized. Of this amount, $ 26.2 million pertains to uncertain tax positions, and the remainder relates to interest and penalties, which are accounted for as a component of our income tax provision.
-Our tax positions are subject to income tax audits in multiple tax jurisdictions globally. Our estimates of the potential outcome of any uncertain tax position are subject to management's assessment of the relevant risks, facts, and circumstances existing at that time. We believe that we have provided adequate reserves for our income tax
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+(b) Marketable Equity Securities
+We held marketable equity securities of $ 377 million and $ 383 million as of April 25, 2026 and July 26, 2025, respectively. We recognized net unrealized gains of $ 26  million and $ 21  million during the third quarter and first nine months of fiscal 2026, respectively, and net unrealized losses of $ 35  million and $ 6  million for the corresponding periods of fiscal 2025, respectively, on our marketable securities still held as of the reporting date.
+(c) Non-Marketable Equity Securities
+Our non-marketable equity securities are investments in privately held entities, venture funds, and publicly traded entities that do not have readily determinable fair value (RDFV). The carrying value of these investments are summarized below (in millions):
+| | | | | | | | | | | |
+| April 25, 2026 | | July 26, 2025 |
+Initial cost of non-marketable equity securities measured under the measurement alternative | $ | 1,102   | | | $ | 975   | |
+Cumulative upward adjustments | 440   | | | 195   | |
+Cumulative downward adjustments, including impairments | ( 602 ) | | | ( 597 ) | |
+Non-marketable equity securities under measurement alternative | 940   | | | 573   | |
+Restricted equity securities | 379   | | | —   | |
+Consolidated investments | 702   | | | 508   | |
+Non-marketable equity securities under net asset value (NAV), equity method and other | 925   | | | 840   | |
+Total | $ | 2,946   | | | $ | 1,921   | |
+Our non-marketable equity securities using the measurement alternative are adjusted to fair value on a non-recurring basis. Adjustments are made when observable transactions for identical or similar investments of the same issuer occur, or due to impairment. These securities are classified as Level 3 in the fair value hierarchy because we estimate the value based on valuation methods using the observable transaction price at the transaction date and other unobservable inputs such as volatility, rights, and obligations of the securities we hold.
+Restricted equity securities are investments in publicly traded entities measured at fair value on a recurring basis. These investments are classified as Level 2 in the fair value hierarchy, as they are valued using pricing models that use observable market inputs reduced by a discount for lack of marketability (“DLOM”). The fair value of these restricted equity securities was $ 379  million as of April 25, 2026 and we recognized unrealized losses of $ 31  million for the third quarter and first nine months of fiscal 2026.
+Our non-marketable equity securities classified as consolidated investments include venture funds that qualified for investment company specific accounting, the accounts of which are consolidated within our financial statements under the voting interest entity model. The noncontrolling interest attributed to these investments was $ 271  million and $ 162  million as of April 25, 2026 and July 26, 2025, respectively, and is included in the equity section of the Consolidated Balance Sheets. The share of earnings attributable to the noncontrolling interest attributed to these investments is not material for any of the periods presented and is included in other income (loss), net in the Consolidated Statements of Operations.
+Of the total carrying value of our non-marketable equity securities as of April 25, 2026, $ 0.9 billion of such investments are considered to be in variable interest entities which are unconsolidated.
 22
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-uncertainties in all open tax years. However, our future results may include adjustments to estimates in the period the audits are settled, which may impact our effective tax rate.
-Our India subsidiary is currently appealing the corporate income tax assessment of $ 1.9 million for the audit period of April 2022 through March 2023. It also has an open corporate income tax audit for the period from April 2022 through March 2024. However, following the signing of an advance pricing agreement during the three months ended April 30, 2026, India tax disputes for transfer pricing matters are expected to be withdrawn within the next three months. Our Romania subsidiary is currently appealing the corporate income tax audit decision for the period from January 2018 through January 2022. In addition, a valid bilateral transfer pricing agreement between our U.S. entity and our Romania entity on the transfer pricing methodology for the cost contribution agreement has been finalized and signed for tax years 2023 through 2028. The bilateral transfer pricing negotiations for our transfer pricing model between Japan and Romania are still underway, with the expectation of being finalized during the first half of fiscal year 2027, consistent with the tax position we have adopted.
-On December 20, 2021, the Organization for Economic Co-operation and Development ("OECD") published the Pillar Two Model Rules defining the global minimum tax for multinational enterprises with an annual revenue above €750.0 million . The OECD has since issued administrative guidance providing transition and safe harbor rules around the implementation of the Pillar Two global minimum tax. We assessed and have determined that the Pillar Two Model Rules do not have a significant impact on our estimated effective tax rate for fiscal year 2027 . We will continue to monitor the developments and evaluate potential impact on future periods.
-14. Net Income (Loss) Per Share
-The following table sets forth the computation of basic and diluted net income (loss) per share for the periods presented (in thousands except per share amounts):
-| | | | | | | | | | | |
-| Three Months Ended April 30, |
-| 2026 | | 2025 |
-Numerator: (1)
-| | | |
-Net income (loss)
-| $ | 22,525   | | | $ | ( 22,555 ) | |
-Denominator: (1)
-| | | |
-Weighted-average shares used in computing net income (loss) per share, basic
-| 523,584   | | | 548,451   | |
-Dilutive potential common shares from outstanding equity awards
-| 4,234   | | | —   | |
-Weighted-average shares used in computing net income (loss) per share, diluted
-| 527,818   | | | 548,451   | |
-Net income (loss) per share, basic
-| $ | 0.04   | | | $ | ( 0.04 ) | |
-Net income (loss) per share, diluted
-| $ | 0.04   | | | $ | ( 0.04 ) | |
-(1) Amounts presented under Class A and Class B columns in prior periods have been combined to conform with current year presentation |
-Anti-dilutive common stock equivalents excluded from the computation of diluted net income (loss) per share were as follows (in thousands):
-| | | | | | | | | | | |
-| Three Months Ended April 30, |
-| 2026 | | 2025 |
-Unvested RSUs | 10,798   | | | 25,881   | |
-Outstanding stock options | 2,330   | | | 8,830   | |
-Shares issuable under ESPP | —   | | | 1,043   | |
-Unvested PSUs
-| —   | | | 205   | |
-Returnable shares issued in connection with business acquisition | —   | | | 136   | |
-| | | |
-Total | 13,128   | | | 36,095   | |
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+11. Fair Value
+(a) Assets and Liabilities Measured at Fair Value on a Recurring Basis
+Assets and liabilities measured at fair value on a recurring basis were as follows (in millions):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| APRIL 25, 2026 | | JULY 26, 2025 |
+| FAIR VALUE MEASUREMENTS | | FAIR VALUE MEASUREMENTS |
+| Level 1 | | Level 2 | | Total
+Balance | | Level 1 | | Level 2 | | Total
+Balance |
+Assets: | | | | | | | | | | | |
+Cash equivalents: | | | | | | | | | | | |
+Money market funds | $ | 4,258   | | | $ | —   | | | $ | 4,258   | | | $ | 5,885   | | | $ | —   | | | $ | 5,885   | |
+Commercial paper | —   | | | 953   | | | 953   | | | —   | | | 336   | | | 336   | |
+Certificates of deposit | —   | | | 25   | | | 25   | | | —   | | | —   | | | —   | |
+Corporate debt securities | —   | | | 16   | | | 16   | | | —   | | | 1   | | | 1   | |
+Non-U.S. government and agency securities | —   | | | 58   | | | 58   | | | —   | | | —   | | | —   | |
+Available-for-sale debt investments: | | | | | | | | | | | |
+U.S. government securities | —   | | | 1,712   | | | 1,712   | | | —   | | | 1,961   | | | 1,961   | |
+U.S. government agency securities | —   | | | 41   | | | 41   | | | —   | | | 67   | | | 67   | |
+Non-U.S. government and agency securities | —   | | | 400   | | | 400   | | | —   | | | 458   | | | 458   | |
+Corporate debt securities | —   | | | 2,758   | | | 2,758   | | | —   | | | 3,090   | | | 3,090   | |
+Mortgage- and asset-backed securities | —   | | | 203   | | | 203   | | | —   | | | 286   | | | 286   | |
+Commercial paper | —   | | | 2,731   | | | 2,731   | | | —   | | | 950   | | | 950   | |
+Certificates of deposit | —   | | | 1,335   | | | 1,335   | | | —   | | | 569   | | | 569   | |
+Equity investments: | | | | | | | | | | | |
+Marketable equity securities | 377   | | | —   | | | 377   | | | 383   | | | —   | | | 383   | |
+Other current assets: | | | | | | | | | | | |
+Money market funds | —   | | | —   | | | —   | | | 563   | | | —   | | | 563   | |
+Derivative assets | —   | | | 90   | | | 90   | | | —   | | | 32   | | | 32   | |
+Total | $ | 4,635   | | | $ | 10,322   | | | $ | 14,957   | | | $ | 6,831   | | | $ | 7,750   | | | $ | 14,581   | |
+Liabilities: | | | | | | | | | | | |
+Derivative liabilities | —   | | | 86   | | | 86   | | | —   | | | 31   | | | 31   | |
+Total | $ | —   | | | $ | 86   | | | $ | 86   | | | $ | —   | | | $ | 31   | | | $ | 31   | |
+Level 1 marketable equity securities are determined by using quoted prices in active markets for identical assets. Level 2 available-for-sale debt investments are priced using quoted market prices for similar instruments or nonbinding market prices that are corroborated by observable market data. We use inputs such as actual trade data, benchmark yields, broker/dealer quotes, and other similar data, which are obtained from quoted market prices, independent pricing vendors, or other sources, to determine the ultimate fair value of these assets and liabilities. We use such pricing data as the primary input to make our assessments and determinations as to the ultimate valuation of our investment portfolio and have not made, during the periods presented, any material adjustments to such inputs. We are ultimately responsible for the financial statements and underlying estimates. We did not have any transfers between Level 1 and Level 2 fair value measurements during the periods presented.
+For more discussion on the fair value measurement of our non-marketable equity securities, see Note 10.
+(b) Other Fair Value Disclosures
+The fair value of our short-term loan receivables approximates their carrying value due to their short duration. The aggregate carrying value of our long-term loan receivables was $ 3.1 billion and $ 2.9 billion as of April 25, 2026 and July 26, 2025, respectively. The estimated fair value of our long-term loan receivables approximates their carrying value. We use unobservable inputs in determining discounted cash flows to estimate the fair value of our long-term loan receivables, and therefore they are categorized as Level 3.
 23
 Table of Contents
-UiPath, Inc.
-Notes to Condensed Consolidated Financial Statements (Continued)
-(unaudited)
-15. Related Party Transactions
-We have at times made use of an aircraft which is owned by Daniel Dines, our CEO, through a special purpose limited liability company and which is operated by a third-party aircraft management company. Mr. Dines, through this special purpose limited liability company, bears all associated operating, personnel, and maintenance costs. For the three months ended April 30, 2026 and 2025, we incurred expenses of $ 0.8 million and none , respectively, in connection with our business use of the aircraft.
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+As of April 25, 2026, the estimated fair value of our short-term debt approximates its carrying value due to the short maturities. As of April 25, 2026, the fair value of our senior fixed-rate notes was $ 23.3 billion, with a carrying amount of $ 22.9 billion. This compares to a fair value of $ 25.0 billion and a carrying amount of $ 24.6 billion as of July 26, 2025. The fair value of the senior fixed-rate notes was determined based on observable market prices in a less active market and was categorized as Level 2.
+12. Borrowings
+(a) Short-Term Debt
+The following table summarizes our short-term debt (in millions, except percentages):
+| | | | | | | | | | | | | | | | | | | | | | | |
+| April 25, 2026 | | July 26, 2025 |
+| Amount | | Effective Rate | | Amount | | Effective Rate |
+Current portion of senior fixed-rate notes | $ | 3,498   | | | 3.89   | % | | $ | 1,749   | | | 4.15   | % |
+Commercial paper | 8,434   | | | 3.78   | % | | 3,482   | | | 4.37   | % |
+Current portion of other debt | —   | | | —   | | | 1   | | | 1.13   | % |
+Total | $ | 11,932   | | | | | $ | 5,232   | | | |
+We have a short-term debt financing program of up to $ 15.0  billion through the issuance of commercial paper notes. We use the proceeds from the issuance of commercial paper notes for general corporate purposes.
+The effective rates for the short- and long-term debt include the interest on the notes, the accretion of the discount, the issuance costs, and, if applicable, adjustments related to hedging.
 24
 Table of Contents
-Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations.
-The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our unaudited condensed consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q and our audited consolidated financial statements and the related notes and the discussion under the heading “Management’s Discussion and Analysis of Financial Condition and Results of Operations” for the fiscal year ended January 31, 2026 included in our Annual Report on Form 10-K filed with the Securities and Exchange Commission ("SEC") on March 25, 2026 (the "2026 Form 10-K"). This discussion, particularly information with respect to our future results of operations or financial condition, business strategy, and plans and objectives of management for future operations, includes forward-looking statements that involve risks and uncertainties as described under the heading “ Special Note Regarding Forward-Looking Statements ” in this Quarterly Report on Form 10-Q. You should review the disclosure under Part I, Item 1A, "Risk Factors," in the 2026 Form 10-K for discussion of important factors that could cause our actual results to differ materially from those anticipated in these forward-looking statements.
-Overview
-Building upon decades of leadership in automation, UiPath is pioneering the evolution from rule-based automation to intelligent, agentic automation. The UiPath Platform™ uniquely combines controlled agency, developer flexibility, and seamless integration to help organizations scale agentic automation safely and confidently. Committed to security, governance, and interoperability, we support enterprises as they transition into a future where automation delivers on the full potential of AI to transform industries.
-Historically, we have grown our revenue and ARR significantly by helping customers adopt automation as a tool, process by process, to unlock human potential. Today, our automation platform builds upon this experience by providing our customers with a foundation for enterprise-scale agentic automation.
-Business Highlights for the Three Months Ended April 30, 2026:
-• Revenue of $418.4 million increased 17% year-over-year.
-• ARR at April 30, 2026 of $1,901.2 million increased 12% year-over-year.
-• Gross margin was 82% for the three months ended April 30, 2026 and 2025.
-• Cash flow from operations was $131.9 million for the three months ended April 30, 2026, compared to $119.0 million for the t
+CISCO SYSTEMS, INC.
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Continued)
+(Unaudited)
+(b) Long-Term Debt
+The following table summarizes our long-term debt (in millions, except percentages):
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| | | April 25, 2026 | | July 26, 2025 |
+| Maturity Date | | Amount | | Effective Rate | | Amount | | Effective Rate |
+Senior fixed-rate notes: | | | | | | | | | |
+4.90 % | February 26, 2026 | | $ | —   | | | — | | $ | 1,000   | | | 5.00 % |
+2.95 % | February 28, 2026 | | —   | | | — | | 750   | | | 3.01 % |
+2.50 % | September 20, 2026 | | 1,500   | | | 2.55 % | | 1,500   | | | 2.55 % |
+4.80 % | February 26, 2027 | | 2,000   | | |
